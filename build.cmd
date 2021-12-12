@@ -1,0 +1,1 @@
+g++ main.cc file.cc welcome.cc -o hebeuMap.exe
