@@ -2,10 +2,11 @@
  * @Description: 编程过程中记录学到的东西
  * @Author: HailayLin
  * @Date: 2021-12-12 16:04:10
- * @LastEditTime: 2021-12-12 18:45:45
+ * @LastEditTime: 2021-12-12 19:03:03
  * @FilePath: \DataStructClassDesign\readme.md
 -->
 # 数据结构课程设计：校园导航
+* 源程序里面不写技术问题，在这里写，不然显得代码很乱
 
 ## 协作编辑
 ### vscode share live
