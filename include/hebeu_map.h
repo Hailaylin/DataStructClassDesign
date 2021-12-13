@@ -2,7 +2,7 @@
  * @Description: 写所有的函数声明、结构体定义
  * @Author: HailayLin
  * @Date: 2021-12-12 16:34:06
- * @LastEditTime: 2021-12-13 18:36:20
+ * @LastEditTime: 2021-12-13 19:37:10
  * @FilePath: \DataStructClassDesign\include\hebeu_map.h
  */
 
@@ -22,21 +22,21 @@ typedef int Status;
 const int kVexNum = 15;
 
 // 枚举道路类型(约等于常数)
-enum WayTpye {  kRoad=0,        // 车能走的大路
-                kPath           // 只能人行的小路；人能走自行车和电瓶车就都能走
+enum WayTpye {  kRoad=0,          // 车能走的大路
+                kPath=1           // 只能人行的小路；人能走自行车和电瓶车就都能走
                 };
 
 // 枚举地点类型
-enum SiteTpye { kDormitory,     // 宿舍
-                kCanteen,       // 饭堂
-                kClassRoom,     // 教室
-                kLibrary,       // 图书馆
-                kScenery,       // 景点
-                kCollege,       // 学院
-                kGate,          // 大门
-                kExpress,       // 快递网点
-                kHospital,      // 医院
-                kOther,         // 其他，比如星宝岛-大鹅之家、亭子等
+enum SiteTpye { kDormitory=0,     // 宿舍
+                kCanteen=1,       // 饭堂
+                kClassRoom=2,     // 教室
+                kLibrary=3,       // 图书馆
+                kScenery=4,       // 景点
+                kCollege=5,       // 学院
+                kGate=6,          // 大门
+                kExpress=7,       // 快递网点
+                kHospital=8,      // 医院
+                kOther=9,         // 其他，比如星宝岛-大鹅之家、亭子等
                 };
 
 
@@ -61,8 +61,6 @@ class SchoolMap {
   ~SchoolMap(); // 析构
  private:
   SiteVertex vers[kVexNum];   // 地点节点数组
-    
-    // 
 };
 
 
