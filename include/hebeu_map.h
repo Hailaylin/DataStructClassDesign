@@ -2,13 +2,13 @@
  * @Description: 写所有的函数声明、结构体定义
  * @Author: HailayLin
  * @Date: 2021-12-12 16:34:06
- * @LastEditTime: 2021-12-13 20:29:11
- * @FilePath: \DataStructClassDesign\include\hebeu_map.h
+ * @LastEditTime: 2021-12-14 00:17:32
+ * @FilePath: \undefinedd:\Onedrive\DataStructClassDesign\include\hebeu_map.h
  */
 
 
 #pragma once
-#include<stdio.h>
+#include<iostream>
 #include<string>
 using namespace std;
 
@@ -42,8 +42,9 @@ enum SiteTpye { kDormitory=0,     // 宿舍
 
 /* 邻接矩阵地点信息结构体 */
 typedef struct SiteVertex {
-    string *name;   // 地点名称
-    unsigned int type;  // 地点类型
+    int id; // 地点序号
+    char *name;   // 地点名称
+    int type;  // 地点类型
 }SiteVertex;
 
 
@@ -68,13 +69,20 @@ class SchoolMap {
   FILE *fp_vexs;
 
  public:
- // 初始化邻接矩阵，把文件的数据读入，不单独新建立一个Init，显得多余
+ // 初始化邻接矩阵，把文件的数据读入对象
   SchoolMap(const char *vexs_data_filename,
-            const char *arcs_data_filename);  // 构造
-  // 析构，关闭文件
+            const char *arcs_data_filename);
+  // 析构，关闭置空文件指针
   ~SchoolMap();
+  // 无向图加边(路径)
+  void AddWay(const int &row,
+              const int &column,
+              const int &distance,
+              const int &way_type );
   // 输出邻接矩阵和节点表
-  void Show();
+  void ShowMairix();
+  // 输出节点表：4行5列
+  void ShowVexs();
   // 求最短路径
   void Dij();
 };

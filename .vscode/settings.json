@@ -20,5 +20,6 @@
         "system_error": "cpp",
         "utility": "cpp",
         "random": "cpp"
-    }
+    },
+    "todo-tree.tree.showBadges": false
 }

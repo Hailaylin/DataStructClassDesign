@@ -1,4 +1,4 @@
-# CMake 最低版本号要求
+# CMake 最低版本号要求，直接写成最新的，太久的2.8写上去报错
 cmake_minimum_required (VERSION 3.22)
  
 # 项目信息
