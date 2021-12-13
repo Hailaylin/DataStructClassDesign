@@ -2,7 +2,7 @@
  * @Description: 写所有的函数声明、结构体定义
  * @Author: HailayLin
  * @Date: 2021-12-12 16:34:06
- * @LastEditTime: 2021-12-13 19:37:10
+ * @LastEditTime: 2021-12-13 20:29:11
  * @FilePath: \DataStructClassDesign\include\hebeu_map.h
  */
 
@@ -56,11 +56,27 @@ typedef struct WayArc {
 
 /* 无向图-邻接矩阵法存储 */
 class SchoolMap {
- public:
-  SchoolMap();  // 构造
-  ~SchoolMap(); // 析构
  private:
-  SiteVertex vers[kVexNum];   // 地点节点数组
+  SiteVertex vexs[kVexNum];   // 地点节点数组
+  WayArc arcs[kVexNum][kVexNum];    // 地点邻接矩阵，每一元素是路径长度，无边用最大值代替
+  // 实际节点数
+  int vexNum;
+  // 实际边数
+  int arcNum;
+  // 点和边的文件指针，构造函数打开、最后析构关闭
+  FILE *fp_arcs;
+  FILE *fp_vexs;
+
+ public:
+ // 初始化邻接矩阵，把文件的数据读入，不单独新建立一个Init，显得多余
+  SchoolMap(const char *vexs_data_filename,
+            const char *arcs_data_filename);  // 构造
+  // 析构，关闭文件
+  ~SchoolMap();
+  // 输出邻接矩阵和节点表
+  void Show();
+  // 求最短路径
+  void Dij();
 };
 
 
@@ -70,7 +86,7 @@ class SchoolMap {
  */
 
 // 1 输出欢迎信息
-void welcome();
+void welcome(const char *welcome_mag_filename);
 
 
 // 2 输出菜单
@@ -82,7 +98,7 @@ void menu();
  */
 
 // 读取文件
-FILE *readFile(char filename[]);
+FILE *ReadFile(const char filename[]);
 
 // 读取点信息
 
