@@ -2,8 +2,8 @@
  * @Description: 写所有的函数声明、结构体定义
  * @Author: HailayLin
  * @Date: 2021-12-12 16:34:06
- * @LastEditTime: 2021-12-12 20:34:24
- * @FilePath: \DataStructClassDesign\hebeu_map.h
+ * @LastEditTime: 2021-12-13 18:36:20
+ * @FilePath: \DataStructClassDesign\include\hebeu_map.h
  */
 
 
@@ -40,37 +40,30 @@ enum SiteTpye { kDormitory,     // 宿舍
                 };
 
 
-/**
- * @brief 邻接矩阵地点信息结构体
- * 
- */
-typedef struct SiteVertex
-{
+/* 邻接矩阵地点信息结构体 */
+typedef struct SiteVertex {
     string *name;   // 地点名称
     unsigned int type;  // 地点类型
 }SiteVertex;
 
 
-/**
- * @brief 邻接矩阵的边结构体
- * 
- */
-typedef struct WayArc
-{
+/* 邻接矩阵的边结构体 */
+typedef struct WayArc {
     int type;   // 道路类型
     unsigned int distance;  // 道路长度: 无边用无穷大表示
-};
+}WayArc;
 
 
-// 图结构体
-typedef struct SchoolMap
-{
-    SiteVertex vers[kVexNum];   // 地点节点数组
-
+/* 无向图-邻接矩阵法存储 */
+class SchoolMap {
+ public:
+  SchoolMap();  // 构造
+  ~SchoolMap(); // 析构
+ private:
+  SiteVertex vers[kVexNum];   // 地点节点数组
+    
     // 
 };
-
-
 
 
 /**

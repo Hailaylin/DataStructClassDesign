@@ -10,9 +10,9 @@
                 "-g",               //生成调试信息
                 "-std=c++17",
                 "-Wall",            //允许发出GCC能够提供的所有有用的警告
-                "${file}",
+                "${workspaceFolder}\\src\\*.cpp",
                 "-o",
-                "${workspaceFolder}\\TestProgram.exe"    //编译后文件的地址和文件名.exe
+                "${workspaceFolder}\\builds\\debug.exe"    //编译后文件的地址和文件名.exe
             ],
             "problemMatcher": [
                 "$gcc"
