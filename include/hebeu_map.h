@@ -2,7 +2,7 @@
  * @Description: 写所有的函数声明、结构体定义
  * @Author: HailayLin
  * @Date: 2021-12-12 16:34:06
- * @LastEditTime: 2021-12-14 00:17:32
+ * @LastEditTime: 2021-12-14 00:38:12
  * @FilePath: \undefinedd:\Onedrive\DataStructClassDesign\include\hebeu_map.h
  */
 
@@ -19,7 +19,7 @@ typedef int Status;
 
 
 // 预置最大节点数
-const int kVexNum = 15;
+const int kVexNum = 7;
 
 // 枚举道路类型(约等于常数)
 enum WayTpye {  kRoad=0,          // 车能走的大路
