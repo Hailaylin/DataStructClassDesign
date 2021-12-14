@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: HailayLin
  * @Date: 2021-12-12 15:32:18
- * @LastEditTime: 2021-12-14 20:52:52
+ * @LastEditTime: 2021-12-14 21:35:29
  * @FilePath: \DataStructClassDesign\src\init.cpp
  */
 
@@ -20,7 +20,7 @@ SchoolMap::SchoolMap(const char *vexs_data_filename,
     }
     else {
         // 读取点
-        fscanf(fp_vexs, "%d", &vexNum); // BUG 吸回车
+        fscanf(fp_vexs, "%d", &vexNum);
         char ch = fgetc(fp_vexs);
         for (int i = 0; i < vexNum; i++) {
             fscanf(fp_vexs, "%d %s %d", 
