@@ -2,21 +2,21 @@
  * @Description: 
  * @Author: HailayLin
  * @Date: 2021-12-12 15:32:18
- * @LastEditTime: 2021-12-15 16:47:34
- * @FilePath: \DataStructClassDesign\src\init.cpp
+ * @LastEditTime: 2021-12-15 19:39:10
+ * @FilePath: \Algorithmd:\Onedrive\DataStructClassDesign\src\init.cpp
  */
 
 /* 因为本人尚不熟悉C++ iostream 的使用，故先用C的 */
 
-#include"..\include\hebeu_map.h"
+#include"../include/hebeu_map.h"
 
 SchoolMap::SchoolMap(const char *vexs_data_filename,
                      const char *arcs_data_filename) {
     fp_vexs = fopen(vexs_data_filename, "r+");
     fp_arcs = fopen(arcs_data_filename, "r+");
-
+    
     if (fp_vexs == NULL || arcs == NULL) {
-        // 手动输入创建图
+        // TODO 手动输入创建图
     }
     else {
         // 读取点
@@ -52,14 +52,8 @@ SchoolMap::SchoolMap(const char *vexs_data_filename,
     }
     fclose(fp_vexs);
     fclose(fp_vexs);
-}
-
-void SchoolMap::AddWay( const int &row,   // 矩阵的行列row,column
-                        const int &column,
-                        const int &distance,  // 矩阵边权重和路径类型
-                        const int &way_type ) {
-    arcs[column][row].distance = arcs[row][column].distance = distance;
-    arcs[column][row].type =  arcs[row][column].type = way_type;
+    
+    cout << "读取地图完毕." << endl;
 }
 
 SchoolMap::~SchoolMap() {

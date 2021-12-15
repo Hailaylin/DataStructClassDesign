@@ -2,7 +2,7 @@
  * @Description: 写所有的函数声明、结构体定义
  * @Author: HailayLin
  * @Date: 2021-12-12 16:34:06
- * @LastEditTime: 2021-12-15 16:55:37
+ * @LastEditTime: 2021-12-15 20:13:24
  * @FilePath: \Algorithmd:\Onedrive\DataStructClassDesign\include\hebeu_map.h
  */
 
@@ -89,29 +89,34 @@ class SchoolMap {
               const int &column,
               const int &distance,
               const int &way_type );
-  // 求从源点v0开始到其余各点的最短路径并存储到shortDis[]
+  // 求从源点v0开始到其余各点的最短路径并存储到shortDis[i]
   void Dijkstra(int v0);
   // 输出邻接矩阵和节点表
   void ShowMairix();
   // 输出节点表：4行5列
   void ShowVexs();
   // 输出源点v0到其余节点vi最短路径和最短距离
-  void ShowV0V(int v0);
+  void ShortestAll(int v0);
   // 输出最短路径
   void DisplayPath(int begin, int temp);
   // 输出两点vx, vy的最短距离与最短路径
-  void Show2Shortest(int vx, int vy);
-
-  // TODO修改边
+  void Shortest2(int vx, int vy);
+  
+  // 输出菜单
+  int menu(const char *filename);
+  
+  // TODO修改点
 
   // TODO增加节点
 
+  // TODO通过地点文本定位点序号
 };
 
+// 0 文件读取遍历输出文本
+void ShowFileText(const char *filename);
 
 // 1 输出欢迎信息
 void welcome(const char *welcome_mag_filename);
 
-// 2 输出菜单
-void menu();
+
 

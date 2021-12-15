@@ -19,7 +19,8 @@
         "stdexcept": "cpp",
         "system_error": "cpp",
         "utility": "cpp",
-        "random": "cpp"
+        "random": "cpp",
+        "*.in": "cpp"
     },
     "todo-tree.tree.showBadges": false
 }

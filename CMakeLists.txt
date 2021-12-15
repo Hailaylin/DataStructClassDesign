@@ -2,14 +2,20 @@
 cmake_minimum_required (VERSION 3.22)
  
 # 项目信息
-project (school_map VERSION 0.0.3)
- 
+project (hebeu_map VERSION 0.0.4)
+
+# 指定include目录
+INCLUDE_DIRECTORIES(${PROJECT_BINARY_DIR})
+# 指定包含文件
+configure_file(config.h.in config.h)
+
+
 # 查找当前目录下的所有源文件
 # 并将名称保存到 DIR_SRCS 变量
 aux_source_directory(./src DIR_SRCS)
  
 # 指定生成目标
-add_executable(school_map ${DIR_SRCS})
+add_executable(hebeu_map ${DIR_SRCS})
 
 # 上文由下文连接中文章修改而成
 # ————————————————

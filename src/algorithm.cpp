@@ -2,10 +2,10 @@
  * @Description: 
  * @Author: HailayLin
  * @Date: 2021-12-13 23:32:23
- * @LastEditTime: 2021-12-15 16:53:26
+ * @LastEditTime: 2021-12-15 20:13:56
  * @FilePath: \DataStructClassDesign\src\algorithm.cpp
  */
-#include"..\include\hebeu_map.h"
+#include"../include/hebeu_map.h"
 
 void SchoolMap::Dijkstra(int v0) {
     // 初始化，源点v0到v1的弧
@@ -48,26 +48,11 @@ void SchoolMap::Dijkstra(int v0) {
     this->v0 = v0;
 }
 
-void SchoolMap::ShowV0V(int v0) {
-    if (v0 != this->v0) {
-        Dijkstra(v0);
-    }
-    for (int i = 0; i < vexNum; i++)
-    {
-        if (v0 == i) continue;
-        cout << vexs[v0].name << "————" << vexs[i].name <<  " : ";
-        if (shortDis[i] == INT_MAX) cout << "无路" << endl;
-        else {
-            cout << shortDis[i] << endl;
-            DisplayPath(v0, i);
-            cout << vexs[i].name << endl;
-        }
-    }
-}
 
-void SchoolMap::DisplayPath(int begin ,int temp ){
-	if(prePath[temp] != -1){
-		DisplayPath(begin ,prePath[temp]);
-		printf("%s-->",vexs[prePath[temp]].name);
-	}
+void SchoolMap::AddWay( const int &row,   // 矩阵的行列row,column
+                        const int &column,
+                        const int &distance,  // 矩阵边权重和路径类型
+                        const int &way_type=0 ) {
+    arcs[column][row].distance = arcs[row][column].distance = distance;
+    arcs[column][row].type =  arcs[row][column].type = way_type;
 }
