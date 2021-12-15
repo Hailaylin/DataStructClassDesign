@@ -2,8 +2,8 @@
  * @Description: 写所有的函数声明、结构体定义
  * @Author: HailayLin
  * @Date: 2021-12-12 16:34:06
- * @LastEditTime: 2021-12-14 00:38:12
- * @FilePath: \undefinedd:\Onedrive\DataStructClassDesign\include\hebeu_map.h
+ * @LastEditTime: 2021-12-15 15:50:02
+ * @FilePath: \Algorithmd:\Onedrive\DataStructClassDesign\include\hebeu_map.h
  */
 
 
@@ -67,9 +67,17 @@ class SchoolMap {
   // 点和边的文件指针，构造函数打开、最后析构关闭
   FILE *fp_arcs;
   FILE *fp_vexs;
+  // 标记已用dijkstra求出最短路径的源点v0；初始不标记
+  int v0 = -1;
+  // 顶点是否已经被访问为最短路径
+  bool isShort[kVexNum] = {false};
+  // 记录源点v0到终点vi的直接前驱顶点序号，v0=-1
+  int prePath[kVexNum] = {-1};
+  // 源点v0到vi的当前最短路径，初值为弧上权值
+  int shortDis[kVexNum] = {INT_MAX};
 
  public:
- // 初始化邻接矩阵，把文件的数据读入对象
+  // 初始化邻接矩阵，把文件的数据读入对象
   SchoolMap(const char *vexs_data_filename,
             const char *arcs_data_filename);
   // 析构，关闭置空文件指针
@@ -79,12 +87,18 @@ class SchoolMap {
               const int &column,
               const int &distance,
               const int &way_type );
+  // 求从源点v0开始到其余各点的最短路径并存储到shortDis[]
+  void Dijkstra(int v0);
   // 输出邻接矩阵和节点表
   void ShowMairix();
   // 输出节点表：4行5列
   void ShowVexs();
-  // 求最短路径
-  void Dij();
+  // 输出源点v0到其余节点vi最短路径和最短距离
+ShowSourceShortestShowV0V(int v0);
+  // 输出最短路径
+  void DisplayPath(int begin, int temp);
+  // 输出两点vx, vy的最短距离与最短路径
+  void Show2Shortest(int vx, int vy);
 };
 
 

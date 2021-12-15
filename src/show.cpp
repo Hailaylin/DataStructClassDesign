@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: HailayLin
  * @Date: 2021-12-13 23:16:33
- * @LastEditTime: 2021-12-14 21:35:07
+ * @LastEditTime: 2021-12-15 15:30:46
  * @FilePath: \DataStructClassDesign\src\show.cpp
  */
 
@@ -28,7 +28,6 @@ void SchoolMap::ShowMairix() {
     }
     printf("\n");
 }
-
 
 void SchoolMap::ShowVexs() {
     // 输出列标序号

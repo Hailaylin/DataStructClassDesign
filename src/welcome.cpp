@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: HailayLin
  * @Date: 2021-12-12 16:37:00
- * @LastEditTime: 2021-12-13 20:58:20
+ * @LastEditTime: 2021-12-14 22:03:40
  * @FilePath: \DataStructClassDesign\src\welcome.cpp
  */
 
@@ -14,8 +14,11 @@
 #include<iostream>
 
 void welcome(const char *welcome_mag_filename) {
-    FILE *fp = fopen(welcome_mag_filename, "r");
+    // 解决输出乱码问题
+    system("chcp 65001");
+    system("cls");
     // 遍历每一行输出
+    FILE *fp = fopen(welcome_mag_filename, "r");
     int MAX_STR = 100;
     char each_line[MAX_STR];    // 要是数组才能输出，char*类型不行
     while(fgets(each_line, MAX_STR, fp) != NULL) {
