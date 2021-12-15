@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: HailayLin
  * @Date: 2021-12-13 23:16:33
- * @LastEditTime: 2021-12-15 19:17:04
+ * @LastEditTime: 2021-12-15 21:19:23
  * @FilePath: \DataStructClassDesign\src\show.cpp
  */
 
@@ -47,12 +47,13 @@ void SchoolMap::Shortest2(int vx, int vy) {
         Dijkstra(vx);
     }
     cout <<  "输出两点间最短路径" << endl;
-    printf("\'%s\'————\'%s\'的最短距离为%d，最短路径：\n",
+    printf("%s——%s\t最短距离:%6d\t最短路径: ",
             vexs[vx].name, vexs[vy].name, shortDis[vy]);
     DisplayPath(vx, vy);
     cout << vexs[vy].name << endl;
 }
 
+// 上面那个函数可以调用，一样的内容
 void SchoolMap::ShortestAll(int v0) {
     // 如果存的不是v0就重新算
     if (v0 != this->v0) {
@@ -61,12 +62,8 @@ void SchoolMap::ShortestAll(int v0) {
     for (int i = 0; i < vexNum; i++)
     {
         if (v0 == i) continue;  // 不输出自反边
-        cout << vexs[v0].name << "————" << vexs[i].name <<  " : ";
-        if (shortDis[i] == INT_MAX) cout << "无路" << endl;
-        else {  // 有路时输出路径
-            cout << shortDis[i] << endl;
-            DisplayPath(v0, i);
-            cout << vexs[i].name << endl;
+        else {
+            Shortest2(v0, i);
         }
     }
 }

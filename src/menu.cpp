@@ -2,12 +2,14 @@
  * @Description: 菜单
  * @Author: HailayLin
  * @Date: 2021-12-15 18:41:17
- * @LastEditTime: 2021-12-15 20:22:19
+ * @LastEditTime: 2021-12-15 21:08:23
  * @FilePath: \DataStructClassDesign\src\menu.cpp
  */
 
 #include"../include/hebeu_map.h"
 
+// 功能选择，在 menu.msg 上有详细功能表
+// 打开编译好的应用也可查看
 enum MenuType { kExit       = 0,
                 kShowV0All  = 1,
                 kShow2      = 2,
@@ -17,18 +19,33 @@ enum MenuType { kExit       = 0,
                 };
 
 int SchoolMap::menu(const char *filename) {
-    int choice = kExit;
+    int cmd = kExit;
     bool flgExit = false;
+    cout << "按任意键进入菜单." << endl;
     do {
+        system("pause");
+        system("cls");
         ShowFileText(filename);
         cout << "您的选择:";
-        cin >> choice;
-        switch (choice) {
+        // 试图解决非法输入问题
+        while (true)
+        {
+            cin >> cmd;
+            if (cin.fail() || cmd < 0 || cmd > kAddWay) {
+                cin.clear();
+                cin.ignore(INT_MAX,'\n');
+                cout << "不合法的输入，请重新输入." << endl;
+                continue;
+            }
+            else break;
+        }
+        switch (cmd) {
         case kExit: {
             flgExit = true;
             break;
         }
         case kShowV0All: {
+            ShowVexs();
             cout << "请输入您要查询的节点:";
             int v0;
             cin >> v0;
@@ -61,11 +78,11 @@ int SchoolMap::menu(const char *filename) {
             break;
         }
         default: {
-            cout << "您的输入有误，请重新选择功能." << endl;
+            cout << "您的输入有误，请重新选择功能. 按任意键继续使用程序." << endl;
             break;
         }
         } // switch()
-        system("pause");
+        // 初始化
     } while(!flgExit);
-    return choice;
+    return cmd;
 }
