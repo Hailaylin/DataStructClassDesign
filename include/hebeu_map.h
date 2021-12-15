@@ -2,7 +2,7 @@
  * @Description: 写所有的函数声明、结构体定义
  * @Author: HailayLin
  * @Date: 2021-12-12 16:34:06
- * @LastEditTime: 2021-12-15 16:12:44
+ * @LastEditTime: 2021-12-15 16:55:37
  * @FilePath: \Algorithmd:\Onedrive\DataStructClassDesign\include\hebeu_map.h
  */
 
@@ -20,6 +20,8 @@ typedef int Status;
 
 // 预置最大节点数
 const int kVexNum = 7;
+// 预置最大文本数
+const int kStrMax = 256; 
 
 // 枚举道路类型(约等于常数)
 enum WayTpye {  kRoad=0,          // 车能走的大路
@@ -43,7 +45,7 @@ enum SiteTpye { kDormitory=0,     // 宿舍
 /* 邻接矩阵地点信息结构体 */
 typedef struct SiteVertex {
     int id; // 地点序号
-    char *name;   // 地点名称
+    char name[kStrMax];   // 地点名称
     int type;  // 地点类型
 }SiteVertex;
 
@@ -99,45 +101,17 @@ class SchoolMap {
   void DisplayPath(int begin, int temp);
   // 输出两点vx, vy的最短距离与最短路径
   void Show2Shortest(int vx, int vy);
+
+  // TODO修改边
+
+  // TODO增加节点
+
 };
 
-
-/**
- * @brief 初始信息输出
- * 
- */
 
 // 1 输出欢迎信息
 void welcome(const char *welcome_mag_filename);
 
-
 // 2 输出菜单
 void menu();
 
-/**
- * @brief 文件操作
- * 
- */
-
-// 读取文件
-FILE *ReadFile(const char filename[]);
-
-// 读取点信息
-
-
-// 读取边信息
-
-// 修改边
-
-// 增加节点
-
-// 初始化邻接矩阵
-
-/**
- * @brief 领接矩阵算法
- * 
- */
-
-// 
-
-// 迪杰斯科拉算法

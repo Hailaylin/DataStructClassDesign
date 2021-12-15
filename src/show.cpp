@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: HailayLin
  * @Date: 2021-12-13 23:16:33
- * @LastEditTime: 2021-12-15 16:39:34
+ * @LastEditTime: 2021-12-15 16:44:46
  * @FilePath: \DataStructClassDesign\src\show.cpp
  */
 
@@ -36,7 +36,7 @@ void SchoolMap::ShowVexs() {
     }
     printf("\n");
     for (int j = 0; j < vexNum; j++) {
-        printf("%s\t", *(vexs[j].name));
+        printf("%s\t", vexs[j].name);
     }
     printf("\n");
 }

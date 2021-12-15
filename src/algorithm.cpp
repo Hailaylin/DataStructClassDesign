@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: HailayLin
  * @Date: 2021-12-13 23:32:23
- * @LastEditTime: 2021-12-15 16:28:46
+ * @LastEditTime: 2021-12-15 16:53:26
  * @FilePath: \DataStructClassDesign\src\algorithm.cpp
  */
 #include"..\include\hebeu_map.h"
@@ -54,11 +54,14 @@ void SchoolMap::ShowV0V(int v0) {
     }
     for (int i = 0; i < vexNum; i++)
     {
-        cout << vexs[v0].name << " ———— " << vexs[i].name <<  " : ";
+        if (v0 == i) continue;
+        cout << vexs[v0].name << "————" << vexs[i].name <<  " : ";
         if (shortDis[i] == INT_MAX) cout << "无路" << endl;
-        else cout << shortDis[i] << endl;
-        DisplayPath(v0, i);
-        cout << vexs[i].name << endl;
+        else {
+            cout << shortDis[i] << endl;
+            DisplayPath(v0, i);
+            cout << vexs[i].name << endl;
+        }
     }
 }
 

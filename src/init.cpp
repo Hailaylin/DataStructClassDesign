@@ -2,15 +2,13 @@
  * @Description: 
  * @Author: HailayLin
  * @Date: 2021-12-12 15:32:18
- * @LastEditTime: 2021-12-15 16:25:15
+ * @LastEditTime: 2021-12-15 16:47:34
  * @FilePath: \DataStructClassDesign\src\init.cpp
  */
 
 /* 因为本人尚不熟悉C++ iostream 的使用，故先用C的 */
 
 #include"..\include\hebeu_map.h"
-
-const int kStrMax = 256; 
 
 SchoolMap::SchoolMap(const char *vexs_data_filename,
                      const char *arcs_data_filename) {
@@ -25,10 +23,9 @@ SchoolMap::SchoolMap(const char *vexs_data_filename,
         fscanf(fp_vexs, "%d", &vexNum);
         char ch = fgetc(fp_vexs);
         for (int i = 0; i < vexNum; i++) {
-            char tmpstr[kStrMax] = {};
             fscanf(fp_vexs, "%d %s %d", 
-                &vexs[i].id, tmpstr, &vexs[i].type);
-            vexs[i].name = tmpstr;    // BUG 输入文字有问题
+                &vexs[i].id, vexs[i].name, &vexs[i].type);
+                // 一定要输入数组…… 指针太不好操作了
             ch = fgetc(fp_vexs);
         }
         
