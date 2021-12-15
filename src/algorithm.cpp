@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: HailayLin
  * @Date: 2021-12-13 23:32:23
- * @LastEditTime: 2021-12-15 15:55:27
+ * @LastEditTime: 2021-12-15 16:28:46
  * @FilePath: \DataStructClassDesign\src\algorithm.cpp
  */
 #include"..\include\hebeu_map.h"
@@ -65,6 +65,6 @@ void SchoolMap::ShowV0V(int v0) {
 void SchoolMap::DisplayPath(int begin ,int temp ){
 	if(prePath[temp] != -1){
 		DisplayPath(begin ,prePath[temp]);
-		cout << vexs[prePath[temp]].name << "-->";
+		printf("%s-->",vexs[prePath[temp]].name);
 	}
 }

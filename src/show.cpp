@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: HailayLin
  * @Date: 2021-12-13 23:16:33
- * @LastEditTime: 2021-12-15 15:30:46
+ * @LastEditTime: 2021-12-15 16:39:34
  * @FilePath: \DataStructClassDesign\src\show.cpp
  */
 
@@ -30,9 +30,13 @@ void SchoolMap::ShowMairix() {
 }
 
 void SchoolMap::ShowVexs() {
-    // 输出列标序号
+    // 输出列标序号和点名称
     for (int j = 0; j < vexNum; j++) {
         printf("%d\t", j);
+    }
+    printf("\n");
+    for (int j = 0; j < vexNum; j++) {
+        printf("%s\t", *(vexs[j].name));
     }
     printf("\n");
 }

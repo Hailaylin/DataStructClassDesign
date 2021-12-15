@@ -2,7 +2,7 @@
  * @Description: 写所有的函数声明、结构体定义
  * @Author: HailayLin
  * @Date: 2021-12-12 16:34:06
- * @LastEditTime: 2021-12-15 15:50:02
+ * @LastEditTime: 2021-12-15 16:12:44
  * @FilePath: \Algorithmd:\Onedrive\DataStructClassDesign\include\hebeu_map.h
  */
 
@@ -94,7 +94,7 @@ class SchoolMap {
   // 输出节点表：4行5列
   void ShowVexs();
   // 输出源点v0到其余节点vi最短路径和最短距离
-ShowSourceShortestShowV0V(int v0);
+  void ShowV0V(int v0);
   // 输出最短路径
   void DisplayPath(int begin, int temp);
   // 输出两点vx, vy的最短距离与最短路径
