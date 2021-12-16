@@ -2,36 +2,36 @@
  * @Description: 
  * @Author: HailayLin
  * @Date: 2021-12-12 15:32:18
- * @LastEditTime: 2021-12-16 19:24:13
+ * @LastEditTime: 2021-12-16 19:54:01
  * @FilePath: \DataStructClassDesign\src\init.cpp
  */
 
-/* å› ä¸ºæœ¬äººå°šä¸ç†Ÿæ‚‰C++ iostream çš„ä½¿ç”¨ï¼Œæ•…å…ˆç”¨Cçš„ */
+/* ÒòÎª±¾ÈËÉĞ²»ÊìÏ¤C++ iostream µÄÊ¹ÓÃ£¬¹ÊÏÈÓÃCµÄ */
 
 #include"../include/hebeu_map.h"
 #include<string.h>
 
 SchoolMap::SchoolMap(const char *vexs_data_filename,
                      const char *arcs_data_filename) {
-    // åˆå§‹åŒ–æ–‡ä»¶å
+    // ³õÊ¼»¯ÎÄ¼şÃû
     strcpy(vexDataFilename, vexs_data_filename);
     strcpy(arcDataFilename, arcs_data_filename);
 
-    // åˆå§‹åŒ–æ‰€æœ‰è¾¹ï¼Œä¸èƒ½å»æ‰ï¼Œä¼šå‡ºé”™
+    // ³õÊ¼»¯ËùÓĞ±ß£¬²»ÄÜÈ¥µô£¬»á³ö´í
     for (int i = 0; i < kVexNum; i++) {
         for (int j = 0; j < kVexNum; j++) {
             arcs[i][j].distance = INT_MAX;
         }
     }
     ReadMap();
-    // åˆå§‹v0 = 0çš„æœ€çŸ­è·¯å¾„
+    // ³õÊ¼v0 = 0µÄ×î¶ÌÂ·¾¶
     v0 = 0;
     Dijkstra(v0);
-    cout << "è¯»å–åœ°å›¾å®Œæ¯•." << endl;
+    cout << "¶ÁÈ¡µØÍ¼Íê±Ï." << endl;
 }
 
 void SchoolMap::CreateArcs(char filename[FILENAME_MAX], int n) {
-    // æ–‡ä»¶è¯»å–
+    // ÎÄ¼ş¶ÁÈ¡
     FILE *fp;
     if (strcmp(filename, arcDataFilename) == 0) {
         fp = fopen(arcDataFilename, "r+");
@@ -40,17 +40,17 @@ void SchoolMap::CreateArcs(char filename[FILENAME_MAX], int n) {
         fp = fopen(filename, "w+");
     }
 
-    // å¾ªç¯åˆ›å»º
+    // Ñ­»·´´½¨
     int cow, column, distance, way_type;
     for (int i = 0; i < n; i++) {
-        cout << "è¯·è¾“å…¥ è¡Œ åˆ— è·ç¦» è¾¹ç±»å‹"; 
+        cout << "ÇëÊäÈë ĞĞ ÁĞ ¾àÀë ±ßÀàĞÍ"; 
         cin >> cow >> column >> distance >> way_type;
         AddWay(cow, column, distance, way_type);
     }
-    // å…³é—­æ–‡ä»¶
+    // ¹Ø±ÕÎÄ¼ş
     fclose(fp);
 
-    // ä¿å­˜å‘¢
+    // ±£´æÄØ
     SaveMapArc(filename);
 
 }
@@ -58,30 +58,30 @@ void SchoolMap::CreateArcs(char filename[FILENAME_MAX], int n) {
 void SchoolMap::ReadMap() {
     fp_vexs = fopen(vexDataFilename, "r+");
     fp_arcs = fopen(arcDataFilename, "r+");
-    // è¯»å–ç‚¹
+    // ¶ÁÈ¡µã
     fscanf(fp_vexs, "%d", &vexNum);
     char ch = fgetc(fp_vexs);
     for (int i = 0; i < vexNum; i++) {
         fscanf(fp_vexs, "%d %s %d", 
             &vexs[i].id, vexs[i].name, &vexs[i].type);
-            // ä¸€å®šè¦è¾“å…¥æ•°ç»„â€¦â€¦ æŒ‡é’ˆå¤ªä¸å¥½æ“ä½œäº†
+            // Ò»¶¨ÒªÊäÈëÊı×é¡­¡­ Ö¸ÕëÌ«²»ºÃ²Ù×÷ÁË
         ch = fgetc(fp_vexs);
     }
-    // è¯»è¾¹
+    // ¶Á±ß
     int tmp;
     fscanf(fp_arcs, "%d", &tmp);
     if (tmp == EOF) 
-        cout << "æ‚¨éœ€è¦å…ˆåˆ›å»ºé‚»æ¥çŸ©é˜µ." << endl;
+        cout << "ÄúĞèÒªÏÈ´´½¨ÁÚ½Ó¾ØÕó." << endl;
     else arcNum = tmp;
     ch = fgetc(fp_vexs);
     for (int j = 0; j < arcNum; j++) {
         int row = 0, column = 0;
-        int distance = 0;   // è·¯çš„æƒé‡ï¼Œç”¨distanceä¼šä¸é‡å¤
+        int distance = 0;   // Â·µÄÈ¨ÖØ£¬ÓÃdistance»áÓëÖØ¸´
         int way_type = 0;
-        // åº”è¯¥æœ‰ä¸€ä¸ªåŠ è¾¹çš„åœ°æ–¹
+        // Ó¦¸ÃÓĞÒ»¸ö¼Ó±ßµÄµØ·½
         fscanf(fp_arcs, "%d %d %d %d", &row, &column, &distance, &way_type);
         ch = fgetc(fp_vexs);
-        // æ— å‘å›¾åŠ è¾¹ï¼Œåº”è¯¥åšæˆä¸€ä¸ªå‡½æ•°
+        // ÎŞÏòÍ¼¼Ó±ß£¬Ó¦¸Ã×ö³ÉÒ»¸öº¯Êı
         AddWay(row, column, distance, way_type);
     } // for
     fclose(fp_vexs);
@@ -89,7 +89,7 @@ void SchoolMap::ReadMap() {
 }
 
 void SchoolMap::SaveMapArc(char filename[FILENAME_MAX]) {
-    char name[FILENAME_MAX] = "data/";  // å°è£…æˆä¸€ä¸ªå‡½æ•°ï¼Ÿ
+    char name[FILENAME_MAX] = "data/";  // ·â×°³ÉÒ»¸öº¯Êı£¿
     strcat(name, filename);
     FILE *fp = fopen(filename, "w+");
     fprintf(fp, "%d\n", arcNum);
@@ -120,7 +120,7 @@ void SchoolMap::CreateVexs(char filename[FILENAME_MAX], int n) {
     int id, type;
     vexNum = n;
     for (int i = 0; i < n; i++) {
-        cout << "è¯·è¾“å…¥åœ°ç‚¹çš„ id åç§° ç±»å‹:";
+        cout << "ÇëÊäÈëµØµãµÄ id Ãû³Æ ÀàĞÍ:";
         cin >> id >> name >> type;
         AddVex(id, name, type);
     }

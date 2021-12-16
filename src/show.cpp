@@ -2,23 +2,23 @@
  * @Description: 
  * @Author: HailayLin
  * @Date: 2021-12-13 23:16:33
- * @LastEditTime: 2021-12-16 15:56:39
+ * @LastEditTime: 2021-12-16 19:54:36
  * @FilePath: \DataStructClassDesign\src\show.cpp
  */
 
 #include"../include/hebeu_map.h"
 #include"../include/show.h"
 
-/* æ ¼å¼åŒ–è¾“å‡ºçŸ©é˜µ */
+/* ¸ñÊ½»¯Êä³ö¾ØÕó */
 void SchoolMap::ShowMairix() {
-    // è¾“å‡ºä¸€æ¡æ¨ªçº¿é—´éš”
+    // Êä³öÒ»ÌõºáÏß¼ä¸ô
     string line_(kTabLength*vexNum, '_');
     cout << line_ << endl;
-    // è¾“å‡ºé‚»æ¥çŸ©é˜µ
+    // Êä³öÁÚ½Ó¾ØÕó
     for (int i = 0; i < vexNum; i++) {
         for (int j = 0; j < vexNum; j++) {
             if (INT_MAX == arcs[i][j].distance) {
-                printf("%s\t", "æ— è·¯");
+                printf("%s\t", "ÎŞÂ·");
             }
             else {
                 printf("%d\t", arcs[i][j].distance);
@@ -30,8 +30,8 @@ void SchoolMap::ShowMairix() {
 }
 
 void SchoolMap::ShowVexs() {
-    // è¾“å‡ºåˆ—æ ‡åºå·å’Œç‚¹åç§°
-    cout << "\tèŠ‚ç‚¹è¡¨\t" << endl;
+    // Êä³öÁĞ±êĞòºÅºÍµãÃû³Æ
+    cout << "\t½Úµã±í\t" << endl;
     for (int j = 0; j < vexNum; j++) {
         printf("%d\t", j);
     }
@@ -43,30 +43,30 @@ void SchoolMap::ShowVexs() {
 }
 
 void SchoolMap::Shortest2(int vx, int vy) {
-    // å¦‚æœå­˜çš„ä¸æ˜¯v0å°±é‡æ–°ç®—
+    // Èç¹û´æµÄ²»ÊÇv0¾ÍÖØĞÂËã
     if (vx != this->v0) {
         Dijkstra(vx);
     }
     if (vx == vy) {
-        cout << "è‡ªå·±åˆ°è‡ªå·±ä¸ç”¨è·‘å“¦~" << endl;
+        cout << "×Ô¼ºµ½×Ô¼º²»ÓÃÅÜÅ¶~" << endl;
         return ;
     }
-    cout <<  "è¾“å‡ºä¸¤ç‚¹é—´æœ€çŸ­è·¯å¾„" << endl;
-    printf("%sâ€”â€”%s\tæœ€çŸ­è·ç¦»:%6d\tæœ€çŸ­è·¯å¾„: ",
+    cout <<  "Êä³öÁ½µã¼ä×î¶ÌÂ·¾¶" << endl;
+    printf("%s¡ª¡ª%s\t×î¶Ì¾àÀë:%6d\t×î¶ÌÂ·¾¶: ",
             vexs[vx].name, vexs[vy].name, shortDis[vy]);
     DisplayPath(vx, vy);
     cout << vexs[vy].name << endl;
 }
 
-// ä¸Šé¢é‚£ä¸ªå‡½æ•°å¯ä»¥è°ƒç”¨ï¼Œä¸€æ ·çš„å†…å®¹
+// ÉÏÃæÄÇ¸öº¯Êı¿ÉÒÔµ÷ÓÃ£¬Ò»ÑùµÄÄÚÈİ
 void SchoolMap::ShortestAll(int v0) {
-    // å¦‚æœå­˜çš„ä¸æ˜¯v0å°±é‡æ–°ç®—
+    // Èç¹û´æµÄ²»ÊÇv0¾ÍÖØĞÂËã
     if (v0 != this->v0) {
         Dijkstra(v0);
     }
     for (int i = 0; i < vexNum; i++)
     {
-        if (v0 == i) continue;  // ä¸è¾“å‡ºè‡ªåè¾¹
+        if (v0 == i) continue;  // ²»Êä³ö×Ô·´±ß
         else {
             Shortest2(v0, i);
         }
@@ -74,8 +74,8 @@ void SchoolMap::ShortestAll(int v0) {
 }
 
 void SchoolMap::DisplayPath(int begin ,int temp ){
-	if(prePath[temp] != -1) {   // è¦æ˜¯æ²¡åˆ°æºç‚¹
-		DisplayPath(begin ,prePath[temp]);  // é€’å½’éå†
+	if(prePath[temp] != -1) {   // ÒªÊÇÃ»µ½Ô´µã
+		DisplayPath(begin ,prePath[temp]);  // µİ¹é±éÀú
 		printf("%s-->",vexs[prePath[temp]].name);
 	}
 }

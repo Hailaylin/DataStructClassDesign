@@ -2,33 +2,33 @@
  * @Description: 
  * @Author: HailayLin
  * @Date: 2021-12-12 16:37:00
- * @LastEditTime: 2021-12-16 18:44:40
+ * @LastEditTime: 2021-12-16 19:56:36
  * @FilePath: \DataStructClassDesign\src\welcome.cpp
  */
 
-/* è¾“å‡ºç»™å®šçš„æ¬¢è¿ä¿¡æ¯ï¼Œåœ¨ msg/welcome.msg ä¸­
- * ç”¨å­—ç¬¦ç”»ç”Ÿæˆäº†Hebeu Mapçš„å­—ç¬¦ç”»
- * è¾“å‡ºåå…‰æ ‡åœ¨æœ€åä¸€è¡Œå­—ç¬¦ç”»æœ«å°¾ï¼Œéœ€åŠ ä¸€ä¸ªæ¢è¡Œ
+/* Êä³ö¸ø¶¨µÄ»¶Ó­ĞÅÏ¢£¬ÔÚ msg/welcome.msg ÖĞ
+ * ÓÃ×Ö·û»­Éú³ÉÁËHebeu MapµÄ×Ö·û»­
+ * Êä³öºó¹â±êÔÚ×îºóÒ»ĞĞ×Ö·û»­Ä©Î²£¬Ğè¼ÓÒ»¸ö»»ĞĞ
  */
 
 #include"../include/hebeu_map.h"
 #include"../build/config.h"
 
 void welcome(const char *welcome_mag_filename) {
-    // è§£å†³è¾“å‡ºä¹±ç é—®é¢˜
-    system("chcp 65001");
+    // ½â¾öÊä³öÂÒÂëÎÊÌâ
+    //system("chcp 65001"); // ¸ü¸Ä±àÂëÎªgbk³¢ÊÔ
     system("cls");
-    // éå†æ¯ä¸€è¡Œè¾“å‡º
+    // ±éÀúÃ¿Ò»ĞĞÊä³ö
     ShowFileText(welcome_mag_filename);
-    cout << "# æ¬¢è¿ä½¿ç”¨\'æ²³å›¾\'â€”â€”æ²³åŒ—å·¥ç¨‹å¤§å­¦å°åœ°å›¾"
+    cout << "# »¶Ó­Ê¹ÓÃ\'ºÓÍ¼\'¡ª¡ªºÓ±±¹¤³Ì´óÑ§Ğ¡µØÍ¼"
          << " v" << GetProjectVer()
          << endl;
 }
 
 void ShowFileText(const char *filename) {
-    // éå†æ¯ä¸€è¡Œè¾“å‡º
+    // ±éÀúÃ¿Ò»ĞĞÊä³ö
     FILE *fp = fopen(filename, "r");
-    char each_line[kStrMax];    // è¦æ˜¯æ•°ç»„æ‰èƒ½è¾“å‡ºï¼Œchar*ç±»å‹ä¸è¡Œ
+    char each_line[kStrMax];    // ÒªÊÇÊı×é²ÅÄÜÊä³ö£¬char*ÀàĞÍ²»ĞĞ
     while(fgets(each_line, kStrMax, fp) != NULL) {
         printf("%s", each_line);
     };

@@ -11,7 +11,7 @@
                 "UNICODE",
                 "_UNICODE"
             ],
-            "compilerPath": "C:\\TDM-GCC-64\\bin\\gcc.exe",
+            "compilerPath": "D:\\Apps\\Embarcadero_Dev-Cpp_6.3_TDM-GCC_9.2_Portable\\TDM-GCC-64\\bin\\gcc.exe",
             "cStandard": "c11", //按照mingw64的c/c++标准配置
             "cppStandard": "c++17",
             "intelliSenseMode": "linux-gcc-x64" //排除警告

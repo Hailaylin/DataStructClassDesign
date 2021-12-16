@@ -2,7 +2,7 @@
 cmake_minimum_required (VERSION 3.22)
  
 # 项目信息
-project (hebeu_map VERSION 0.0.6)
+project (hebeu_map VERSION 0.0.7)
 
 # 指定include目录
 INCLUDE_DIRECTORIES(${PROJECT_BINARY_DIR})

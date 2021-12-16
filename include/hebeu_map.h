@@ -1,8 +1,8 @@
 /*
- * @Description: å†™æ‰€æœ‰çš„å‡½æ•°å£°æ˜ã€ç»“æ„ä½“å®šä¹‰
+ * @Description: Ğ´ËùÓĞµÄº¯ÊıÉùÃ÷¡¢½á¹¹Ìå¶¨Òå
  * @Author: HailayLin
  * @Date: 2021-12-12 16:34:06
- * @LastEditTime: 2021-12-16 19:24:25
+ * @LastEditTime: 2021-12-16 19:53:12
  * @FilePath: \DataStructClassDesign\include\hebeu_map.h
  */
 
@@ -15,137 +15,137 @@
 #include <climits>
 using namespace std;
 
-// ä¸€äº›çŠ¶æ€
+// Ò»Ğ©×´Ì¬
 typedef int Status;
 #define OK 1;
 #define ERROR 0;
 
 
-// é¢„ç½®æœ€å¤§èŠ‚ç‚¹æ•°
+// Ô¤ÖÃ×î´ó½ÚµãÊı
 const int kVexNum = 20;
-// é¢„ç½®æœ€å¤§æ–‡æœ¬æ•°
+// Ô¤ÖÃ×î´óÎÄ±¾Êı
 const int kStrMax = 256; 
 
-// æšä¸¾é“è·¯ç±»å‹(çº¦ç­‰äºå¸¸æ•°)
-enum WayTpye {  kRoad=0,          // è½¦èƒ½èµ°çš„å¤§è·¯
-                kPath=1           // åªèƒ½äººè¡Œçš„å°è·¯ï¼›äººèƒ½èµ°è‡ªè¡Œè½¦å’Œç”µç“¶è½¦å°±éƒ½èƒ½èµ°
+// Ã¶¾ÙµÀÂ·ÀàĞÍ(Ô¼µÈÓÚ³£Êı)
+enum WayTpye {  kRoad=0,          // ³µÄÜ×ßµÄ´óÂ·
+                kPath=1           // Ö»ÄÜÈËĞĞµÄĞ¡Â·£»ÈËÄÜ×ß×ÔĞĞ³µºÍµçÆ¿³µ¾Í¶¼ÄÜ×ß
                 };
 
-// æšä¸¾åœ°ç‚¹ç±»å‹
-enum SiteTpye { kDormitory  =0,      // å®¿èˆ
-                kCanteen    =1,      // é¥­å ‚
-                kClassRoom  =2,      // æ•™å®¤
-                kLibrary    =3,      // å›¾ä¹¦é¦†
-                kScenery    =4,      // æ™¯ç‚¹
-                kCollege    =5,      // å­¦é™¢
-                kGate       =6,      // å¤§é—¨
-                kExpress    =7,      // å¿«é€’ç½‘ç‚¹
-                kHospital   =8,      // åŒ»é™¢
-                kOther      =9,      // å…¶ä»–ï¼Œæ¯”å¦‚æ˜Ÿå®å²›-å¤§é¹…ä¹‹å®¶ã€äº­å­ç­‰
+// Ã¶¾ÙµØµãÀàĞÍ
+enum SiteTpye { kDormitory  =0,      // ËŞÉá
+                kCanteen    =1,      // ·¹ÌÃ
+                kClassRoom  =2,      // ½ÌÊÒ
+                kLibrary    =3,      // Í¼Êé¹İ
+                kScenery    =4,      // ¾°µã
+                kCollege    =5,      // Ñ§Ôº
+                kGate       =6,      // ´óÃÅ
+                kExpress    =7,      // ¿ìµİÍøµã
+                kHospital   =8,      // Ò½Ôº
+                kOther      =9,      // ÆäËû£¬±ÈÈçĞÇ±¦µº-´ó¶ìÖ®¼Ò¡¢Í¤×ÓµÈ
                 };
 
 
-/* é‚»æ¥çŸ©é˜µåœ°ç‚¹ä¿¡æ¯ç»“æ„ä½“ */
+/* ÁÚ½Ó¾ØÕóµØµãĞÅÏ¢½á¹¹Ìå */
 typedef struct SiteVertex {
-    int id; // åœ°ç‚¹åºå·
-    char name[kStrMax];   // åœ°ç‚¹åç§°
-    int type;  // åœ°ç‚¹ç±»å‹
+    int id; // µØµãĞòºÅ
+    char name[kStrMax];   // µØµãÃû³Æ
+    int type;  // µØµãÀàĞÍ
 }SiteVertex;
 
 
-/* é‚»æ¥çŸ©é˜µçš„è¾¹ç»“æ„ä½“ */
+/* ÁÚ½Ó¾ØÕóµÄ±ß½á¹¹Ìå */
 typedef struct WayArc {
-    int type;   // é“è·¯ç±»å‹
-    unsigned int distance;  // é“è·¯é•¿åº¦: æ— è¾¹ç”¨æ— ç©·å¤§è¡¨ç¤º
+    int type;   // µÀÂ·ÀàĞÍ
+    unsigned int distance;  // µÀÂ·³¤¶È: ÎŞ±ßÓÃÎŞÇî´ó±íÊ¾
 }WayArc;
 
 
-/* æ— å‘å›¾-é‚»æ¥çŸ©é˜µæ³•å­˜å‚¨ */
+/* ÎŞÏòÍ¼-ÁÚ½Ó¾ØÕó·¨´æ´¢ */
 class SchoolMap {
  public:
-  // åˆå§‹åŒ–é‚»æ¥çŸ©é˜µï¼ŒæŠŠæ–‡ä»¶çš„æ•°æ®è¯»å…¥å¯¹è±¡
-  // TODO è€ƒè™‘å­˜æ–‡ä»¶åï¼Œä¸å­˜æ–‡ä»¶æŒ‡é’ˆï¼ŒæŒ‡é’ˆè¦ç”¨å†åˆ›å»º
+  // ³õÊ¼»¯ÁÚ½Ó¾ØÕó£¬°ÑÎÄ¼şµÄÊı¾İ¶ÁÈë¶ÔÏó
+  // TODO ¿¼ÂÇ´æÎÄ¼şÃû£¬²»´æÎÄ¼şÖ¸Õë£¬Ö¸ÕëÒªÓÃÔÙ´´½¨
   SchoolMap(const char *vexs_data_filename,
             const char *arcs_data_filename);
   
-  // ææ„ï¼Œå…³é—­ç½®ç©ºæ–‡ä»¶æŒ‡é’ˆï¼Œå…¶å®æ²¡å•¥ç”¨ï¼›è‡ªå·±å†™ææ„è¿˜ä¼šæŠ¥é”™
+  // Îö¹¹£¬¹Ø±ÕÖÃ¿ÕÎÄ¼şÖ¸Õë£¬ÆäÊµÃ»É¶ÓÃ£»×Ô¼ºĞ´Îö¹¹»¹»á±¨´í
   // ~SchoolMap();
   
-  // æ— å‘å›¾åŠ è¾¹(è·¯å¾„)
+  // ÎŞÏòÍ¼¼Ó±ß(Â·¾¶)
   void AddWay(const int &row,
               const int &column,
               const int &distance,
               const int &way_type );
   
-  // æ±‚ä»æºç‚¹v0å¼€å§‹åˆ°å…¶ä½™å„ç‚¹çš„æœ€çŸ­è·¯å¾„å¹¶å­˜å‚¨åˆ°shortDis[i]
+  // Çó´ÓÔ´µãv0¿ªÊ¼µ½ÆäÓà¸÷µãµÄ×î¶ÌÂ·¾¶²¢´æ´¢µ½shortDis[i]
   void Dijkstra(int v0);
   
-  // è¾“å‡ºé‚»æ¥çŸ©é˜µå’ŒèŠ‚ç‚¹è¡¨
+  // Êä³öÁÚ½Ó¾ØÕóºÍ½Úµã±í
   void ShowMairix();
   
-  // è¾“å‡ºèŠ‚ç‚¹è¡¨ï¼š4è¡Œ5åˆ—
+  // Êä³ö½Úµã±í£º4ĞĞ5ÁĞ
   void ShowVexs();
   
-  // è¾“å‡ºæºç‚¹v0åˆ°å…¶ä½™èŠ‚ç‚¹viæœ€çŸ­è·¯å¾„å’Œæœ€çŸ­è·ç¦»
+  // Êä³öÔ´µãv0µ½ÆäÓà½Úµãvi×î¶ÌÂ·¾¶ºÍ×î¶Ì¾àÀë
   void ShortestAll(int v0);
   
-  // è¾“å‡ºæœ€çŸ­è·¯å¾„
+  // Êä³ö×î¶ÌÂ·¾¶
   void DisplayPath(int begin, int temp);
   
-  // è¾“å‡ºä¸¤ç‚¹vx, vyçš„æœ€çŸ­è·ç¦»ä¸æœ€çŸ­è·¯å¾„
+  // Êä³öÁ½µãvx, vyµÄ×î¶Ì¾àÀëÓë×î¶ÌÂ·¾¶
   void Shortest2(int vx, int vy);
 
-  // æ‰‹åŠ¨åˆ›å»ºè¾¹ï¼Œç”¨èœå•è¾“å…¥næ•°é‡ï¼ŒæŒ‰éœ€ä½¿ç”¨ï¼Œåä¿å­˜åˆ°æ–‡ä»¶
+  // ÊÖ¶¯´´½¨±ß£¬ÓÃ²Ëµ¥ÊäÈënÊıÁ¿£¬°´ĞèÊ¹ÓÃ£¬ºó±£´æµ½ÎÄ¼ş
   void CreateArcs(char filename[FILENAME_MAX], int n);
 
-  // ä»æ–‡ä»¶è¯»åœ°å›¾çš„ç‚¹å’Œè¾¹
+  // ´ÓÎÄ¼ş¶ÁµØÍ¼µÄµãºÍ±ß
   void ReadMap();
 
-  // TODO åˆ›å»ºèŠ‚ç‚¹ï¼Œæç¤ºä¿¡æ¯å…¨éƒ¨åœ¨menu.cppæ–‡ä»¶
+  // TODO ´´½¨½Úµã£¬ÌáÊ¾ĞÅÏ¢È«²¿ÔÚmenu.cppÎÄ¼ş
   void CreateVexs(char filename[FILENAME_MAX], int n);
 
-  // TODOä¿®æ”¹ç‚¹ã€å¢åŠ ç‚¹
+  // TODOĞŞ¸Äµã¡¢Ôö¼Óµã
   void AddVex(int id, const char *name, int type);
 
-  // TODOé€šè¿‡åœ°ç‚¹æ–‡æœ¬å®šä½ç‚¹åºå·
+  // TODOÍ¨¹ıµØµãÎÄ±¾¶¨Î»µãĞòºÅ
 
-  // ä¿å­˜å›¾çš„ç‚¹
+  // ±£´æÍ¼µÄµã
   void SaveMapVex(char filename[FILENAME_MAX]);
 
-  // ä¿å­˜å›¾çš„è¾¹
+  // ±£´æÍ¼µÄ±ß
   void SaveMapArc(char filename[FILENAME_MAX]);
 
-  // è¾“å‡ºèœå•
+  // Êä³ö²Ëµ¥
   int menu(const char *filename);
 
  private:
-  SiteVertex vexs[kVexNum];   // åœ°ç‚¹èŠ‚ç‚¹æ•°ç»„
-  WayArc arcs[kVexNum][kVexNum];    // åœ°ç‚¹é‚»æ¥çŸ©é˜µï¼Œæ¯ä¸€å…ƒç´ æ˜¯è·¯å¾„é•¿åº¦ï¼Œæ— è¾¹ç”¨æœ€å¤§å€¼ä»£æ›¿
-  int vexNum; // å®é™…èŠ‚ç‚¹æ•°
-  int arcNum; // å®é™…è¾¹æ•°
-  // ç‚¹å’Œè¾¹çš„æ–‡ä»¶æŒ‡é’ˆï¼Œæ„é€ å‡½æ•°æ‰“å¼€ã€æœ€åææ„å…³é—­
+  SiteVertex vexs[kVexNum];   // µØµã½ÚµãÊı×é
+  WayArc arcs[kVexNum][kVexNum];    // µØµãÁÚ½Ó¾ØÕó£¬Ã¿Ò»ÔªËØÊÇÂ·¾¶³¤¶È£¬ÎŞ±ßÓÃ×î´óÖµ´úÌæ
+  int vexNum; // Êµ¼Ê½ÚµãÊı
+  int arcNum; // Êµ¼Ê±ßÊı
+  // µãºÍ±ßµÄÎÄ¼şÖ¸Õë£¬¹¹Ôìº¯Êı´ò¿ª¡¢×îºóÎö¹¹¹Ø±Õ
   FILE *fp_arcs;
   FILE *fp_vexs;
   char vexDataFilename[FILENAME_MAX];
   char arcDataFilename[FILENAME_MAX];
-  // æ ‡è®°å·²ç”¨dijkstraæ±‚å‡ºæœ€çŸ­è·¯å¾„çš„æºç‚¹v0ï¼›åˆå§‹ä¸æ ‡è®°
+  // ±ê¼ÇÒÑÓÃdijkstraÇó³ö×î¶ÌÂ·¾¶µÄÔ´µãv0£»³õÊ¼²»±ê¼Ç
   int v0 = -1;
-  // é¡¶ç‚¹æ˜¯å¦å·²ç»è¢«è®¿é—®ä¸ºæœ€çŸ­è·¯å¾„
+  // ¶¥µãÊÇ·ñÒÑ¾­±»·ÃÎÊÎª×î¶ÌÂ·¾¶
   bool isShort[kVexNum] = {false};
-  // è®°å½•æºç‚¹v0åˆ°ç»ˆç‚¹viçš„ç›´æ¥å‰é©±é¡¶ç‚¹åºå·ï¼Œv0=-1
+  // ¼ÇÂ¼Ô´µãv0µ½ÖÕµãviµÄÖ±½ÓÇ°Çı¶¥µãĞòºÅ£¬v0=-1
   int prePath[kVexNum] = {-1};
-  // æºç‚¹v0åˆ°viçš„å½“å‰æœ€çŸ­è·¯å¾„ï¼Œåˆå€¼ä¸ºå¼§ä¸Šæƒå€¼
+  // Ô´µãv0µ½viµÄµ±Ç°×î¶ÌÂ·¾¶£¬³õÖµÎª»¡ÉÏÈ¨Öµ
   int shortDis[kVexNum] = {INT_MAX};
 };
 
-// 0 æ–‡ä»¶è¯»å–éå†è¾“å‡ºæ–‡æœ¬
+// 0 ÎÄ¼ş¶ÁÈ¡±éÀúÊä³öÎÄ±¾
 void ShowFileText(const char *filename);
 
-// 1 è¾“å‡ºæ¬¢è¿ä¿¡æ¯
+// 1 Êä³ö»¶Ó­ĞÅÏ¢
 void welcome(const char *welcome_mag_filename);
 
-// é™åˆ¶è¾“å…¥ç‚¹ã€è¾¹èŒƒå›´å‡½æ•°
+// ÏŞÖÆÊäÈëµã¡¢±ß·¶Î§º¯Êı
 int LimitInput(const int &min, const int &max);
 
-// é€‰æ‹©æ–‡ä»¶å
+// Ñ¡ÔñÎÄ¼şÃû
 void SelectFileName(char fnameDefault[FILENAME_MAX], char *fnameRequest);

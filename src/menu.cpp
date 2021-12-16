@@ -1,15 +1,15 @@
 /*
- * @Description: èœå•
+ * @Description: ²Ëµ¥
  * @Author: HailayLin
  * @Date: 2021-12-15 18:41:17
- * @LastEditTime: 2021-12-16 19:14:12
+ * @LastEditTime: 2021-12-16 20:08:44
  * @FilePath: \DataStructClassDesign\src\menu.cpp
  */
 
 #include"../include/hebeu_map.h"
 
-// åŠŸèƒ½é€‰æ‹©ï¼Œåœ¨ menu.msg ä¸Šæœ‰è¯¦ç»†åŠŸèƒ½è¡¨
-// æ‰“å¼€ç¼–è¯‘å¥½çš„åº”ç”¨ä¹Ÿå¯æŸ¥çœ‹
+// ¹¦ÄÜÑ¡Ôñ£¬ÔÚ menu.msg ÉÏÓĞÏêÏ¸¹¦ÄÜ±í
+// ´ò¿ª±àÒëºÃµÄÓ¦ÓÃÒ²¿É²é¿´
 enum MenuType { kExit       = 0,
                 kShowV0All  = 1,
                 kShow2      = 2,
@@ -26,16 +26,16 @@ enum MenuType { kExit       = 0,
 int SchoolMap::menu(const char *filename) {
     int cmd = kExit;
     bool flgExit = false;
-    cout << "æŒ‰ä»»æ„é”®è¿›å…¥èœå•." << endl;
+    cout << "°´ÈÎÒâ¼ü½øÈë²Ëµ¥." << endl;
     do {
         system("pause");
         system("cls");
-        ReadMap();      // æ¯æ¬¡éƒ½è¯»å–ï¼Œé˜²æ­¢å†…å®¹ä¿®æ”¹
+        ReadMap();      // Ã¿´Î¶¼¶ÁÈ¡£¬·ÀÖ¹ÄÚÈİĞŞ¸Ä
         ShowFileText(filename);
-        cout << "æ‚¨çš„é€‰æ‹©:";
-        // è¯•å›¾è§£å†³éæ³•è¾“å…¥é—®é¢˜
+        cout << "ÄúµÄÑ¡Ôñ:";
+        // ÊÔÍ¼½â¾ö·Ç·¨ÊäÈëÎÊÌâ
         cmd = LimitInput(kExit, kEditArc);
-        // TODO å˜æˆå¯å¤ç”¨å‡½æ•°
+        // TODO ±ä³É¿É¸´ÓÃº¯Êı
         switch (cmd) {
         case kExit: {
             flgExit = true;
@@ -43,7 +43,7 @@ int SchoolMap::menu(const char *filename) {
         }
         case kShowV0All: {
             ShowVexs();
-            cout << "è¯·è¾“å…¥æ‚¨è¦æŸ¥è¯¢çš„èŠ‚ç‚¹:";
+            cout << "ÇëÊäÈëÄúÒª²éÑ¯µÄ½Úµã:";
             int v0;
             v0 = LimitInput(0, vexNum);
             ShortestAll(v0);
@@ -51,7 +51,7 @@ int SchoolMap::menu(const char *filename) {
         }
         case kShow2: {
             ShowVexs();
-            cout << "é¡¶ç‚¹è¡¨å¦‚ä¸Šï¼Œè¦æŸ¥è¯¢åœ°ç‚¹vx vyåºå·:";
+            cout << "¶¥µã±íÈçÉÏ£¬Òª²éÑ¯µØµãvx vyĞòºÅ:";
             int vx, vy;
             vx = LimitInput(0, vexNum);
             vy = LimitInput(0, vexNum);
@@ -68,19 +68,19 @@ int SchoolMap::menu(const char *filename) {
             break;
         }
         case kAddWay: {
-            cout << "è¦æ·»åŠ è·¯å¾„çš„è¾“å…¥æ ¼å¼:åœ°ç‚¹v0 åœ°ç‚¹v1 è·ç¦» è·¯å¾„ç±»å‹ï¼ˆé»˜è®¤ä¸ºè½¦å¯åŒè¡Œçš„å¤§è·¯0ï¼‰" << endl
-                 << "ä¾‹å¦‚: 0 1 500 0" << endl
-                 << "è¯·è¾“å…¥:";
+            cout << "ÒªÌí¼ÓÂ·¾¶µÄÊäÈë¸ñÊ½:µØµãv0 µØµãv1 ¾àÀë Â·¾¶ÀàĞÍ£¨Ä¬ÈÏÎª³µ¿ÉÍ¬ĞĞµÄ´óÂ·0£©" << endl
+                 << "ÀıÈç: 0 1 500 0" << endl
+                 << "ÇëÊäÈë:";
             int v0, v1, distance, way_type;
             cin >> v0 >> v1 >> distance >> way_type;
             AddWay(v0, v1, distance, way_type);
             arcNum++;
-            // æŠŠå½“å‰å›¾ä¿å­˜åˆ°é€‰æ‹©çš„æ–‡ä»¶ä¸­,ç›®å½•é»˜è®¤ä¸ºdata/
-            cout << "è¾“å…¥çš„å›¾å°†ä¿å­˜åˆ°å“ªï¼Ÿ0æ˜¯é»˜è®¤å›¾ï¼Œ1è¦é”®å…¥æ–‡ä»¶å:";
+            // °Ñµ±Ç°Í¼±£´æµ½Ñ¡ÔñµÄÎÄ¼şÖĞ,Ä¿Â¼Ä¬ÈÏÎªdata/
+            cout << "ÊäÈëµÄÍ¼½«±£´æµ½ÄÄ£¿0ÊÇÄ¬ÈÏÍ¼£¬1Òª¼üÈëÎÄ¼şÃû:";
             int save = LimitInput(0,1);
             char filename[FILENAME_MAX];
             if (save) {
-                cout << "è¯·è¾“å…¥è¦ä¿å­˜è¾¹çš„æ–‡ä»¶å:";
+                cout << "ÇëÊäÈëÒª±£´æ±ßµÄÎÄ¼şÃû:";
                 cin >> filename;
             }
             else {
@@ -94,12 +94,13 @@ int SchoolMap::menu(const char *filename) {
             char name[kStrMax];
             int id, type;
             ShowVexs();
-            cout << "è¯·è¾“å…¥åœ°ç‚¹çš„ id åç§° ç±»å‹:";
+            cout << "ÇëÊäÈëµØµãµÄ id Ãû³Æ ÀàĞÍ:";
             cin >> id >> name >> type;
             AddVex(id, name, type);
             vexNum++;
-            cout << "å·²ç»“æŸæ·»åŠ .æ·»åŠ åçš„èŠ‚ç‚¹è¡¨ä¸º:" << endl;
+            cout << "ÒÑ½áÊøÌí¼Ó.Ìí¼ÓºóµÄ½Úµã±íÎª:" << endl;
             ShowVexs();
+            break;
         }
         case kCreateArcs:{
             ShowVexs();
@@ -109,14 +110,14 @@ int SchoolMap::menu(const char *filename) {
             CreateArcs(fnameRequest, createArcsNum);
         }
         case kCreateVexs: {
-            cout << "æ­¤åŠŸèƒ½å°†æ›´æ–°æ–‡ä»¶å­˜å‚¨çš„èŠ‚ç‚¹ï¼Œè¯·æ…ç”¨." << endl;
-            cout << "è¯·è¾“å…¥è¦å¢åŠ çš„èŠ‚ç‚¹æ•°:";
+            cout << "´Ë¹¦ÄÜ½«¸üĞÂÎÄ¼ş´æ´¢µÄ½Úµã£¬ÇëÉ÷ÓÃ." << endl;
+            cout << "ÇëÊäÈëÒªÔö¼ÓµÄ½ÚµãÊı:";
             int createVexsNum = LimitInput(0, 100);
-            cout << "è¾“å…¥èŠ‚ç‚¹æ–‡ä»¶å°†ä¿å­˜åˆ°å“ªï¼Ÿ0æ˜¯é»˜è®¤æ–‡ä»¶ï¼Œ1æ˜¯é”®å…¥æ–‡ä»¶å:";
+            cout << "ÊäÈë½ÚµãÎÄ¼ş½«±£´æµ½ÄÄ£¿0ÊÇÄ¬ÈÏÎÄ¼ş£¬1ÊÇ¼üÈëÎÄ¼şÃû:";
             int save = LimitInput(0,1);
             char filename[FILENAME_MAX];
             if (save) {
-                cout << "è¯·è¾“å…¥è¦ä¿å­˜ç‚¹çš„æ–‡ä»¶å:";
+                cout << "ÇëÊäÈëÒª±£´æµãµÄÎÄ¼şÃû:";
                 cin >> filename;
             }
             else {
@@ -126,9 +127,9 @@ int SchoolMap::menu(const char *filename) {
             break;
         }
         case kEditArc: {
-            cout << "è¦æ·»åŠ è·¯å¾„çš„è¾“å…¥æ ¼å¼:åœ°ç‚¹v0 åœ°ç‚¹v1 è·ç¦» è·¯å¾„ç±»å‹ï¼ˆé»˜è®¤ä¸ºè½¦å¯åŒè¡Œçš„å¤§è·¯0ï¼‰" << endl
-                 << "ä¾‹å¦‚: 0 1 500 0" << endl
-                 << "è¯·è¾“å…¥:";
+            cout << "ÒªÌí¼ÓÂ·¾¶µÄÊäÈë¸ñÊ½:µØµãv0 µØµãv1 ¾àÀë Â·¾¶ÀàĞÍ£¨Ä¬ÈÏÎª³µ¿ÉÍ¬ĞĞµÄ´óÂ·0£©" << endl
+                 << "ÀıÈç: 0 1 500 0" << endl
+                 << "ÇëÊäÈë:";
             int v0, v1, distance, way_type;
             cin >> v0 >> v1 >> distance >> way_type;
             AddWay(v0, v1, distance, way_type);
@@ -140,34 +141,25 @@ int SchoolMap::menu(const char *filename) {
             char name[kStrMax];
             int id, type;
             ShowVexs();
-            cout << "è¯·è¾“å…¥åœ°ç‚¹çš„ id åç§°(è‹±æ–‡) ç±»å‹:";
-            cin >> id;
-            //getchar();
-            //cin.clear();
-            scanf("%s",name);
-            string str;
-            //cin >> str;
-            //cin >> type;
-            cout << name << endl;
-            //fflush();
-            //scanf("%d %s %d", &id, name, &type);
-            //AddVex(id, , type);
-            cout << "å·²ç»“æŸä¿®æ”¹.ä¿®æ”¹åçš„èŠ‚ç‚¹è¡¨ä¸º:" << endl;
+            cout << "ÇëÊäÈëµØµãµÄ id Ãû³Æ(Ó¢ÎÄ) ÀàĞÍ:";
+            cin >> id >> name >> type;
+            cout << "ÒÑ½áÊøĞŞ¸Ä.ĞŞ¸ÄºóµÄ½Úµã±íÎª:" << endl;
+            AddVex(id, name, type);
             SaveMapVex(vexDataFilename);
             ShowVexs();
             break;
         }
         default: {
-            cout << "æ‚¨çš„è¾“å…¥æœ‰è¯¯ï¼Œè¯·é‡æ–°é€‰æ‹©åŠŸèƒ½. æŒ‰ä»»æ„é”®ç»§ç»­ä½¿ç”¨ç¨‹åº." << endl;
+            cout << "ÄúµÄÊäÈëÓĞÎó£¬ÇëÖØĞÂÑ¡Ôñ¹¦ÄÜ. °´ÈÎÒâ¼ü¼ÌĞøÊ¹ÓÃ³ÌĞò." << endl;
             break;
         }
         } // switch()
-        // åˆå§‹åŒ–
+        // ³õÊ¼»¯
     } while(!flgExit);
     return cmd;
 }
 
-// é™åˆ¶è¾“å…¥ç‚¹ã€è¾¹èŒƒå›´å‡½æ•°
+// ÏŞÖÆÊäÈëµã¡¢±ß·¶Î§º¯Êı
 int LimitInput(const int &min, const int &max) {
     int cmd;
     while (true) {
@@ -175,7 +167,7 @@ int LimitInput(const int &min, const int &max) {
         if (cin.fail() || cmd < min || cmd > max) {
             cin.clear();
             cin.ignore(INT_MAX,'\n');
-            cout << "ä¸åˆæ³•çš„è¾“å…¥ï¼Œè¯·é‡æ–°è¾“å…¥." << endl;
+            cout << "²»ºÏ·¨µÄÊäÈë£¬ÇëÖØĞÂÊäÈë." << endl;
             continue;
         }
         else break;
@@ -183,14 +175,14 @@ int LimitInput(const int &min, const int &max) {
     return cmd;
 }
 
-// ä¿å­˜æ–‡ä»¶åé€‰æ‹©å‡½æ•°
+// ±£´æÎÄ¼şÃûÑ¡Ôñº¯Êı
 void SelectFileName(char fnameDefault[FILENAME_MAX], char *fnameRequest) {
-    // æŠŠå½“å‰å›¾ä¿å­˜åˆ°é€‰æ‹©çš„æ–‡ä»¶ä¸­,ç›®å½•é»˜è®¤ä¸ºdata/
-    cout << "è¾“å…¥æ–‡ä»¶å°†ä¿å­˜åˆ°å“ªï¼Ÿ0æ˜¯é»˜è®¤æ–‡ä»¶ï¼Œ1æ˜¯é”®å…¥æ–‡ä»¶å:";
+    // °Ñµ±Ç°Í¼±£´æµ½Ñ¡ÔñµÄÎÄ¼şÖĞ,Ä¿Â¼Ä¬ÈÏÎªdata/
+    cout << "ÊäÈëÎÄ¼ş½«±£´æµ½ÄÄ£¿0ÊÇÄ¬ÈÏÎÄ¼ş£¬1ÊÇ¼üÈëÎÄ¼şÃû:";
     int save = LimitInput(0,1);
     char filename[FILENAME_MAX];
     if (save) {
-        cout << "è¯·è¾“å…¥è¦ä¿å­˜è¾¹çš„æ–‡ä»¶å:";
+        cout << "ÇëÊäÈëÒª±£´æ±ßµÄÎÄ¼şÃû:";
         cin >> filename;
     }
     else {

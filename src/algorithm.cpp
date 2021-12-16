@@ -2,13 +2,13 @@
  * @Description: 
  * @Author: HailayLin
  * @Date: 2021-12-13 23:32:23
- * @LastEditTime: 2021-12-16 16:53:21
+ * @LastEditTime: 2021-12-16 19:53:42
  * @FilePath: \DataStructClassDesign\src\algorithm.cpp
  */
 #include"../include/hebeu_map.h"
 
 void SchoolMap::Dijkstra(int v0) {
-    // åˆå§‹åŒ–ï¼Œæºç‚¹v0åˆ°v1çš„å¼§
+    // ³õÊ¼»¯£¬Ô´µãv0µ½v1µÄ»¡
     int n = vexNum;
     int v = 0;
     for (int v = 0; v < n; v++) {
@@ -18,25 +18,25 @@ void SchoolMap::Dijkstra(int v0) {
             prePath[v] = v0;
         }
         else {
-            prePath[v] = -1;    // è™½ç„¶ç±»åˆå§‹åŒ–äº†ï¼Œ
-        }                       // ä¸ºä¿è¯ç®—æ³•ä¸€è‡´æ€§ã€å‡å°‘å‡ºé”™ï¼Œè¿˜æ˜¯å†™å§
+            prePath[v] = -1;    // ËäÈ»Àà³õÊ¼»¯ÁË£¬
+        }                       // Îª±£Ö¤Ëã·¨Ò»ÖÂĞÔ¡¢¼õÉÙ³ö´í£¬»¹ÊÇĞ´°É
     }
     isShort[v0] = true;
     shortDis[v0] = 0;
 
-    // ä»1åˆ°n-1æ±‚v0åˆ°v[w]çš„æœ€çŸ­è·¯å¾„
+    // ´Ó1µ½n-1Çóv0µ½v[w]µÄ×î¶ÌÂ·¾¶
     v = 0;
     for (int i = 1; i < n; i++) {
         int min = INT_MAX;
-        // åœ¨shortDisä¸”æ²¡æœ‰è¢«åŠ å…¥Sé›†åˆçš„ç‚¹ä¸­ï¼Œå¯»æ‰¾v0å¼€å§‹çš„æœ€å°è¾¹
+        // ÔÚshortDisÇÒÃ»ÓĞ±»¼ÓÈëS¼¯ºÏµÄµãÖĞ£¬Ñ°ÕÒv0¿ªÊ¼µÄ×îĞ¡±ß
         for (int w = 0; w < n; w++) {
             if (isShort[w] == false && shortDis[w] < min){
                 v = w;
                 min = shortDis[w];
             }
         }
-        isShort[v] = true;  // æ‰¾åˆ°æœ€å°å¼§åå°†åé©±èŠ‚ç‚¹æ¥å…¥åˆ°Sé›†åˆ
-        // SåŠ å…¥våæ›´æ–°v0åˆ°å…¶ä½™vçš„æœ€çŸ­è·¯å¾„
+        isShort[v] = true;  // ÕÒµ½×îĞ¡»¡ºó½«ºóÇı½Úµã½ÓÈëµ½S¼¯ºÏ
+        // S¼ÓÈëvºó¸üĞÂv0µ½ÆäÓàvµÄ×î¶ÌÂ·¾¶
         for (int w = 0; w < n; w++) {
             if (isShort[w] == false
                 && shortDis[v] + arcs[v][w].distance < shortDis[w]) {
@@ -49,9 +49,9 @@ void SchoolMap::Dijkstra(int v0) {
 }
 
 
-void SchoolMap::AddWay( const int &row,   // çŸ©é˜µçš„è¡Œåˆ—row,column
+void SchoolMap::AddWay( const int &row,   // ¾ØÕóµÄĞĞÁĞrow,column
                         const int &column,
-                        const int &distance,  // çŸ©é˜µè¾¹æƒé‡å’Œè·¯å¾„ç±»å‹
+                        const int &distance,  // ¾ØÕó±ßÈ¨ÖØºÍÂ·¾¶ÀàĞÍ
                         const int &way_type=0 ) {
     arcs[column][row].distance = arcs[row][column].distance = distance;
     arcs[column][row].type =  arcs[row][column].type = way_type;

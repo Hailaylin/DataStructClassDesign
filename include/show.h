@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: HailayLin
  * @Date: 2021-12-14 21:28:31
- * @LastEditTime: 2021-12-16 19:09:29
+ * @LastEditTime: 2021-12-16 19:53:22
  * @FilePath: \DataStructClassDesign\include\show.h
  */
 
@@ -10,128 +10,128 @@
 
 const int kTabLength = 8;
 
-// TODO å­—ä½“é¢œè‰²è®¾ç½®ï¼Œæ„Ÿè§‰æš‚æ—¶æ²¡å¿…è¦åŠ ï¼›æœ‰æ—¶é—´å†™å†™
-// ä¸‹æ–‡å‡½æ•°å†™å¾—ä¸å¤ªè¡Œï¼Œä¸‹é¢åˆ—ä¸¾æˆ‘çš„æ”¹è¿›æ–¹æ³•ï¼š
-// 0~15ä¸ªé¢œè‰²çš„å­—ä½“å¯ä»¥ç”¨æšä¸¾å®šä¹‰ï¼Œå†™çš„å¥½çœ‹å¤šäº†ã€‚
-// è€Œä¸”å¯è¾“å…¥å„ç§"æ–‡æœ¬"æ•°æ®"ï¼Œä½¿ä¹‹ç”¨å®šä¹‰çš„é¢œè‰²è¾“å‡ºåï¼Œ
-// åªå˜è‰²è¾“å…¥çš„æ–‡æœ¬ï¼Œå…¶ä½™æ˜¯åŸæ¥çš„7ç™½è‰²ã€‚
-// ä¾‹å¦‚ colorPrintf(kBlue, "color%d\t", i);
-// ç”¨åˆ°å¯å˜å‚æ•°ï¼Œå¥½ç©
+// TODO ×ÖÌåÑÕÉ«ÉèÖÃ£¬¸Ğ¾õÔİÊ±Ã»±ØÒª¼Ó£»ÓĞÊ±¼äĞ´Ğ´
+// ÏÂÎÄº¯ÊıĞ´µÃ²»Ì«ĞĞ£¬ÏÂÃæÁĞ¾ÙÎÒµÄ¸Ä½ø·½·¨£º
+// 0~15¸öÑÕÉ«µÄ×ÖÌå¿ÉÒÔÓÃÃ¶¾Ù¶¨Òå£¬Ğ´µÄºÃ¿´¶àÁË¡£
+// ¶øÇÒ¿ÉÊäÈë¸÷ÖÖ"ÎÄ±¾"Êı¾İ"£¬Ê¹Ö®ÓÃ¶¨ÒåµÄÑÕÉ«Êä³öºó£¬
+// Ö»±äÉ«ÊäÈëµÄÎÄ±¾£¬ÆäÓàÊÇÔ­À´µÄ7°×É«¡£
+// ÀıÈç colorPrintf(kBlue, "color%d\t", i);
+// ÓÃµ½¿É±ä²ÎÊı£¬ºÃÍæ
 
 // #include <windows.h> 
 
 
-// void print_black()		//é»‘è‰²
+// void print_black()		//ºÚÉ«
 // {
-// 	HANDLE hOut;		//  è·å–è¾“å‡ºæµçš„å¥æŸ„
+// 	HANDLE hOut;		//  »ñÈ¡Êä³öÁ÷µÄ¾ä±ú
 //     hOut = GetStdHandle(STD_OUTPUT_HANDLE);   
 // 	SetConsoleTextAttribute(hOut,0);
 // } 
 
-// void print_blue()		//è“è‰²
+// void print_blue()		//À¶É«
 // {
-// 	HANDLE hOut;		//  è·å–è¾“å‡ºæµçš„å¥æŸ„
+// 	HANDLE hOut;		//  »ñÈ¡Êä³öÁ÷µÄ¾ä±ú
 //     hOut = GetStdHandle(STD_OUTPUT_HANDLE);   
 // 	SetConsoleTextAttribute(hOut,1);
 // }
 
-// void print_green()		//ç»¿è‰²
+// void print_green()		//ÂÌÉ«
 // {
-// 	HANDLE hOut;		//  è·å–è¾“å‡ºæµçš„å¥æŸ„
+// 	HANDLE hOut;		//  »ñÈ¡Êä³öÁ÷µÄ¾ä±ú
 //     hOut = GetStdHandle(STD_OUTPUT_HANDLE);   
 // 	SetConsoleTextAttribute(hOut,2);
 // }
 
-// void print_reseda()		//æµ…ç»¿è‰²
+// void print_reseda()		//Ç³ÂÌÉ«
 // {
-// 	HANDLE hOut;		//  è·å–è¾“å‡ºæµçš„å¥æŸ„
+// 	HANDLE hOut;		//  »ñÈ¡Êä³öÁ÷µÄ¾ä±ú
 //     hOut = GetStdHandle(STD_OUTPUT_HANDLE);   
 // 	SetConsoleTextAttribute(hOut,3);
 // }
 
-// void print_red()		//çº¢è‰²
+// void print_red()		//ºìÉ«
 // {
-// 	HANDLE hOut;		//  è·å–è¾“å‡ºæµçš„å¥æŸ„
+// 	HANDLE hOut;		//  »ñÈ¡Êä³öÁ÷µÄ¾ä±ú
 //     hOut = GetStdHandle(STD_OUTPUT_HANDLE);   
 // 	SetConsoleTextAttribute(hOut,4);
 // }
 
-// void print_purple()		//ç´«è‰²
+// void print_purple()		//×ÏÉ«
 // {
-// 	HANDLE hOut;		//  è·å–è¾“å‡ºæµçš„å¥æŸ„
+// 	HANDLE hOut;		//  »ñÈ¡Êä³öÁ÷µÄ¾ä±ú
 //     hOut = GetStdHandle(STD_OUTPUT_HANDLE);   
 // 	SetConsoleTextAttribute(hOut,5);
 // }
 
-// void print_yellow()		//é»„è‰²
+// void print_yellow()		//»ÆÉ«
 // {
-// 	HANDLE hOut;		//  è·å–è¾“å‡ºæµçš„å¥æŸ„
+// 	HANDLE hOut;		//  »ñÈ¡Êä³öÁ÷µÄ¾ä±ú
 //     hOut = GetStdHandle(STD_OUTPUT_HANDLE);   
 // 	SetConsoleTextAttribute(hOut,6);
 // }
 
-// void print_white()		//ç™½è‰²
+// void print_white()		//°×É«
 // {
-// 	HANDLE hOut;		//  è·å–è¾“å‡ºæµçš„å¥æŸ„
+// 	HANDLE hOut;		//  »ñÈ¡Êä³öÁ÷µÄ¾ä±ú
 //     hOut = GetStdHandle(STD_OUTPUT_HANDLE);   
 // 	SetConsoleTextAttribute(hOut,7);
 // }
 
-// void print_gray()		//ç°è‰²
+// void print_gray()		//»ÒÉ«
 // {
-// 	HANDLE hOut;		//  è·å–è¾“å‡ºæµçš„å¥æŸ„
+// 	HANDLE hOut;		//  »ñÈ¡Êä³öÁ÷µÄ¾ä±ú
 //     hOut = GetStdHandle(STD_OUTPUT_HANDLE);   
 // 	SetConsoleTextAttribute(hOut,8);
 // }
 
-// void print_bluish()		//æ·¡è“è‰²
+// void print_bluish()		//µ­À¶É«
 // {
-// 	HANDLE hOut;		//  è·å–è¾“å‡ºæµçš„å¥æŸ„
+// 	HANDLE hOut;		//  »ñÈ¡Êä³öÁ÷µÄ¾ä±ú
 //     hOut = GetStdHandle(STD_OUTPUT_HANDLE);   
 // 	SetConsoleTextAttribute(hOut,9);
 // }
 
-// void print_ondine()		//æ·¡ç»¿è‰²
+// void print_ondine()		//µ­ÂÌÉ«
 // {
-// 	HANDLE hOut;		//  è·å–è¾“å‡ºæµçš„å¥æŸ„
+// 	HANDLE hOut;		//  »ñÈ¡Êä³öÁ÷µÄ¾ä±ú
 //     hOut = GetStdHandle(STD_OUTPUT_HANDLE);   
 // 	SetConsoleTextAttribute(hOut,10);
 // }
 
-// void print_light_ondine()	//æ·¡æµ…ç»¿è‰²
+// void print_light_ondine()	//µ­Ç³ÂÌÉ«
 // {
-// 	HANDLE hOut;		//  è·å–è¾“å‡ºæµçš„å¥æŸ„
+// 	HANDLE hOut;		//  »ñÈ¡Êä³öÁ÷µÄ¾ä±ú
 //     hOut = GetStdHandle(STD_OUTPUT_HANDLE);   
 // 	SetConsoleTextAttribute(hOut,11);
 // }
 
-// void print_reddish()		//æ·¡çº¢è‰²
+// void print_reddish()		//µ­ºìÉ«
 // {
-// 	HANDLE hOut;		//  è·å–è¾“å‡ºæµçš„å¥æŸ„
+// 	HANDLE hOut;		//  »ñÈ¡Êä³öÁ÷µÄ¾ä±ú
 //     hOut = GetStdHandle(STD_OUTPUT_HANDLE);   
 // 	SetConsoleTextAttribute(hOut,12);
 // }
 
-// void print_lavender()		//æ·¡ç´«è‰²
+// void print_lavender()		//µ­×ÏÉ«
 // {
-// 	HANDLE hOut;		//  è·å–è¾“å‡ºæµçš„å¥æŸ„
+// 	HANDLE hOut;		//  »ñÈ¡Êä³öÁ÷µÄ¾ä±ú
 //     hOut = GetStdHandle(STD_OUTPUT_HANDLE);   
 // 	SetConsoleTextAttribute(hOut,13);
 // }
 
-// void print_faint_yellow()	//æ·¡é»„è‰²
+// void print_faint_yellow()	//µ­»ÆÉ«
 // {
-// 	HANDLE hOut;		//  è·å–è¾“å‡ºæµçš„å¥æŸ„
+// 	HANDLE hOut;		//  »ñÈ¡Êä³öÁ÷µÄ¾ä±ú
 //     hOut = GetStdHandle(STD_OUTPUT_HANDLE);   
 // 	SetConsoleTextAttribute(hOut,14);
 // }
 
-// void print_gloss_while()	//äº®ç™½è‰²
+// void print_gloss_while()	//ÁÁ°×É«
 // {
-// 	HANDLE hOut;		//  è·å–è¾“å‡ºæµçš„å¥æŸ„
+// 	HANDLE hOut;		//  »ñÈ¡Êä³öÁ÷µÄ¾ä±ú
 //     hOut = GetStdHandle(STD_OUTPUT_HANDLE);   
 // 	SetConsoleTextAttribute(hOut,15);
 // }
-// // â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”
-// // ç‰ˆæƒå£°æ˜ï¼šæœ¬æ–‡ä¸ºCSDNåšä¸»ã€ŒCode_peasantã€çš„åŸåˆ›æ–‡ç« ï¼Œéµå¾ªCC 4.0 BY-SAç‰ˆæƒåè®®ï¼Œè½¬è½½è¯·é™„ä¸ŠåŸæ–‡å‡ºå¤„é“¾æ¥åŠæœ¬å£°æ˜ã€‚
-// // åŸæ–‡é“¾æ¥ï¼šhttps://blog.csdn.net/Code_peasant/article/details/114381832
+// // ¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª
+// // °æÈ¨ÉùÃ÷£º±¾ÎÄÎªCSDN²©Ö÷¡¸Code_peasant¡¹µÄÔ­´´ÎÄÕÂ£¬×ñÑ­CC 4.0 BY-SA°æÈ¨Ğ­Òé£¬×ªÔØÇë¸½ÉÏÔ­ÎÄ³ö´¦Á´½Ó¼°±¾ÉùÃ÷¡£
+// // Ô­ÎÄÁ´½Ó£ºhttps://blog.csdn.net/Code_peasant/article/details/114381832
