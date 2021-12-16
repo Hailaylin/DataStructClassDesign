@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: HailayLin
  * @Date: 2021-12-13 23:32:23
- * @LastEditTime: 2021-12-15 20:13:56
+ * @LastEditTime: 2021-12-16 16:53:21
  * @FilePath: \DataStructClassDesign\src\algorithm.cpp
  */
 #include"../include/hebeu_map.h"
@@ -55,4 +55,10 @@ void SchoolMap::AddWay( const int &row,   // 矩阵的行列row,column
                         const int &way_type=0 ) {
     arcs[column][row].distance = arcs[row][column].distance = distance;
     arcs[column][row].type =  arcs[row][column].type = way_type;
+}
+
+void SchoolMap::AddVex(int id, const char *name, int type) {
+    vexs[id].id = id;
+    strcpy(vexs[id].name, name);
+    vexs[id].type = type;
 }

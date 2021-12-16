@@ -2,8 +2,8 @@
  * @Description: 
  * @Author: HailayLin
  * @Date: 2021-12-12 16:37:00
- * @LastEditTime: 2021-12-15 19:37:47
- * @FilePath: \Algorithmd:\Onedrive\DataStructClassDesign\src\welcome.cpp
+ * @LastEditTime: 2021-12-16 18:44:40
+ * @FilePath: \DataStructClassDesign\src\welcome.cpp
  */
 
 /* 输出给定的欢迎信息，在 msg/welcome.msg 中
@@ -12,7 +12,7 @@
  */
 
 #include"../include/hebeu_map.h"
-#include"config.h"
+#include"../build/config.h"
 
 void welcome(const char *welcome_mag_filename) {
     // 解决输出乱码问题

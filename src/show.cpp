@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: HailayLin
  * @Date: 2021-12-13 23:16:33
- * @LastEditTime: 2021-12-15 21:19:23
+ * @LastEditTime: 2021-12-16 15:56:39
  * @FilePath: \DataStructClassDesign\src\show.cpp
  */
 
@@ -31,6 +31,7 @@ void SchoolMap::ShowMairix() {
 
 void SchoolMap::ShowVexs() {
     // 输出列标序号和点名称
+    cout << "\t节点表\t" << endl;
     for (int j = 0; j < vexNum; j++) {
         printf("%d\t", j);
     }
@@ -45,6 +46,10 @@ void SchoolMap::Shortest2(int vx, int vy) {
     // 如果存的不是v0就重新算
     if (vx != this->v0) {
         Dijkstra(vx);
+    }
+    if (vx == vy) {
+        cout << "自己到自己不用跑哦~" << endl;
+        return ;
     }
     cout <<  "输出两点间最短路径" << endl;
     printf("%s——%s\t最短距离:%6d\t最短路径: ",

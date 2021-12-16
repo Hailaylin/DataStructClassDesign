@@ -2,14 +2,17 @@
  * @Description: 写所有的函数声明、结构体定义
  * @Author: HailayLin
  * @Date: 2021-12-12 16:34:06
- * @LastEditTime: 2021-12-15 23:41:12
+ * @LastEditTime: 2021-12-16 19:13:01
  * @FilePath: \DataStructClassDesign\include\hebeu_map.h
  */
 
 
 #pragma once
 #include<iostream>
+#include<stdio.h>
 #include<string>
+#include<string.h>
+#include <climits>
 using namespace std;
 
 // 一些状态
@@ -19,7 +22,7 @@ typedef int Status;
 
 
 // 预置最大节点数
-const int kVexNum = 7;
+const int kVexNum = 20;
 // 预置最大文本数
 const int kStrMax = 256; 
 
@@ -93,16 +96,27 @@ class SchoolMap {
   void Shortest2(int vx, int vy);
 
   // 手动创建边，用菜单输入n数量，按需使用，后保存到文件
-  void CreateArcs(int n);
+  void CreateArcs(char filename[FILENAME_MAX], int n);
+
+  // 从文件读地图的点和边
+  void ReadMap();
+
+  // TODO 创建节点，提示信息全部在menu.cpp文件
+  void CreateVexs(char filename[FILENAME_MAX], int n);
+
+  // TODO修改点、增加点
+  void AddVex(int id, const char *name, int type);
+
+  // TODO通过地点文本定位点序号
+
+  // 保存图的点
+  void SaveMapVex(char filename[FILENAME_MAX]);
+
+  // 保存图的边
+  void SaveMapArc(char filename[FILENAME_MAX]);
 
   // 输出菜单
   int menu(const char *filename);
-  
-  // TODO修改点
-
-  // TODO增加节点:加点和边
-
-  // TODO通过地点文本定位点序号
 
  private:
   SiteVertex vexs[kVexNum];   // 地点节点数组
@@ -112,8 +126,8 @@ class SchoolMap {
   // 点和边的文件指针，构造函数打开、最后析构关闭
   FILE *fp_arcs;
   FILE *fp_vexs;
-  char vexDataFilename[kStrMax];
-  char arcDataFilename[kStrMax];
+  char vexDataFilename[FILENAME_MAX];
+  char arcDataFilename[FILENAME_MAX];
   // 标记已用dijkstra求出最短路径的源点v0；初始不标记
   int v0 = -1;
   // 顶点是否已经被访问为最短路径
@@ -130,5 +144,8 @@ void ShowFileText(const char *filename);
 // 1 输出欢迎信息
 void welcome(const char *welcome_mag_filename);
 
+// 限制输入点、边范围函数
+int LimitInput(const int &min, const int &max);
 
-
+// 选择文件名
+void SelectFileName(char fnameDefault[FILENAME_MAX], char *fnameRequest);
