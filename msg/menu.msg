@@ -9,3 +9,5 @@
 3 | kShowMairix  | 输出邻接矩阵
 4 | kShowVex     | 输出地点表
 5 | kAddWay      | 修改或增加边（边连接的两个地点必须存在）
+6 | kCreateArcs  | 按需手动创建图的边
+7 | kCreateVexs  | 按需手动输入图的地点

@@ -2,8 +2,8 @@
  * @Description: 菜单
  * @Author: HailayLin
  * @Date: 2021-12-15 18:41:17
- * @LastEditTime: 2021-12-15 21:08:23
- * @FilePath: \DataStructClassDesign\src\menu.cpp
+ * @LastEditTime: 2021-12-16 09:19:58
+ * @FilePath: \undefinedd:\Onedrive\DataStructClassDesign\src\menu.cpp
  */
 
 #include"../include/hebeu_map.h"
@@ -27,7 +27,8 @@ int SchoolMap::menu(const char *filename) {
         system("cls");
         ShowFileText(filename);
         cout << "您的选择:";
-        // 试图解决非法输入问题
+        // 试图解决非法输入问题 
+        // TODO 变成可复用函数
         while (true)
         {
             cin >> cmd;
@@ -54,7 +55,7 @@ int SchoolMap::menu(const char *filename) {
         }
         case kShow2: {
             ShowVexs();
-            cout << "顶点表如上，要查询地点vx, vy序号:";
+            cout << "顶点表如上，要查询地点vx vy序号:";
             int vx, vy;
             cin >> vx >> vy;
             Shortest2(vx, vy);
@@ -74,6 +75,7 @@ int SchoolMap::menu(const char *filename) {
                  << "例如: 0 1 500 0" << endl
                  << "请输入:";
             int v0, v1, distance, way_type;
+            cin >> v0 >> v1 >> distance >> way_type;
             AddWay(v0, v1, distance, way_type);
             break;
         }
