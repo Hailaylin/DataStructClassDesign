@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: HailayLin
  * @Date: 2021-12-12 15:32:18
- * @LastEditTime: 2021-12-16 17:09:22
+ * @LastEditTime: 2021-12-16 19:24:13
  * @FilePath: \DataStructClassDesign\src\init.cpp
  */
 
@@ -29,18 +29,6 @@ SchoolMap::SchoolMap(const char *vexs_data_filename,
     Dijkstra(v0);
     cout << "读取地图完毕." << endl;
 }
-
-SchoolMap::~SchoolMap() {
-    if (fp_vexs != NULL) {
-        fclose(fp_vexs);
-    }
-    if (fp_arcs != NULL) {
-        fclose(fp_arcs);
-    }
-    fp_vexs = NULL;
-    fp_arcs = NULL;
-}
-
 
 void SchoolMap::CreateArcs(char filename[FILENAME_MAX], int n) {
     // 文件读取

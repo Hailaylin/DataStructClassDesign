@@ -2,7 +2,7 @@
  * @Description: 写所有的函数声明、结构体定义
  * @Author: HailayLin
  * @Date: 2021-12-12 16:34:06
- * @LastEditTime: 2021-12-16 19:13:01
+ * @LastEditTime: 2021-12-16 19:24:25
  * @FilePath: \DataStructClassDesign\include\hebeu_map.h
  */
 
@@ -68,8 +68,8 @@ class SchoolMap {
   SchoolMap(const char *vexs_data_filename,
             const char *arcs_data_filename);
   
-  // 析构，关闭置空文件指针，其实没啥用
-  ~SchoolMap();
+  // 析构，关闭置空文件指针，其实没啥用；自己写析构还会报错
+  // ~SchoolMap();
   
   // 无向图加边(路径)
   void AddWay(const int &row,
