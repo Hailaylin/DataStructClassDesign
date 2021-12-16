@@ -97,7 +97,7 @@ void SchoolMap::ReadMap() {
         AddWay(row, column, distance, way_type);
     } // for
     fclose(fp_vexs);
-    fclose(fp_vexs);
+    fclose(fp_arcs);
 }
 
 void SchoolMap::SaveMapArc(char filename[FILENAME_MAX]) {
