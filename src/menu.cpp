@@ -2,7 +2,7 @@
  * @Description: 菜单
  * @Author: HailayLin
  * @Date: 2021-12-15 18:41:17
- * @LastEditTime: 2021-12-16 21:21:44
+ * @LastEditTime: 2021-12-16 22:43:31
  * @FilePath: \DataStructClassDesign\src\menu.cpp
  */
 
@@ -17,10 +17,8 @@ enum MenuType { kExit       = 0,
                 kShowVex    = 4,
                 kAddWay     = 5,
                 kAddVex     = 6,
-                kCreateArcs = 7,
-                kCreateVexs = 8,
-                kEditVex    = 9,
-                kEditArc    = 10,
+                kEditVex    = 7,
+                kEditArc    = 8,
                 };
 
 int SchoolMap::menu(const char *filename) {
@@ -66,16 +64,23 @@ int SchoolMap::menu(const char *filename) {
             ShowVexs();
             break;
         }
-        case kAddWay: {
+        case kAddWay: { // TODO合理加边
             ShowVexs();
             ShowMairix();
             cout << "要添加路径的输入格式:地点v0 地点v1 距离 路径类型（默认为车可同行的大路0）" << endl
                  << "例如: 0 1 500 0" << endl
-                 << "请输入:";
+                 << "请输入要添加或修改的数量:";
             int v0, v1, distance, way_type;
-            cin >> v0 >> v1 >> distance >> way_type;
-            AddWay(v0, v1, distance, way_type);
-            arcNum++;
+            int n = LimitInput(0, kVexNum*kVexNum - kVexNum);   // 邻接矩阵最大边数，自反不算
+            cout << "请按照格式输入:" << endl;
+            for (int i = 0; i < n; i++) {
+                cin >> v0 >> v1 >> distance >> way_type;
+                if (arcs[v0][v1].type != kEmpty || arcs[v0][v1].distance == INT_MAX) {
+                    arcNum+=2;
+                }
+                AddWay(v0, v1, distance, way_type);
+            }
+            ShowVexs();
             ShowMairix();
             SaveMapArc(arcDataFilename);
             Dijkstra(v0);
@@ -98,23 +103,6 @@ int SchoolMap::menu(const char *filename) {
             SaveMapVex(vexDataFilename);
             cout << "已结束添加.添加后的节点表为:" << endl;
             ShowVexs();
-            break;
-        }
-        case kCreateArcs:{
-            ShowVexs();
-            ShowMairix();
-            cout << "请输入要生成的节点个数:" << endl;
-            int createArcsNum = LimitInput(0,100);
-            CreateArcs(arcDataFilename, createArcsNum);
-            ShowMairix();
-            break;
-        }
-        case kCreateVexs: {
-            cout << "此功能将更新文件存储的节点，请慎用." << endl;
-            cout << "请输入要增加的节点数:";
-            ShowVexs();
-            int createVexsNum = LimitInput(0, 100);
-            CreateVexs(vexDataFilename, createVexsNum);
             break;
         }
         case kEditArc: {
@@ -147,6 +135,7 @@ int SchoolMap::menu(const char *filename) {
         } // switch()
         // 初始化
     } while(!flgExit);
+    cout << "欢迎再次使用\'河图\'小程序" <<  endl;
     return cmd;
 }
 

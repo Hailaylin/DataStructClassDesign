@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: HailayLin
  * @Date: 2021-12-13 23:16:33
- * @LastEditTime: 2021-12-16 21:24:28
+ * @LastEditTime: 2021-12-16 22:13:15
  * @FilePath: \DataStructClassDesign\src\show.cpp
  */
 
@@ -31,9 +31,9 @@ void SchoolMap::ShowMairix() {
 
 void SchoolMap::ShowVexs() {
     // 输出列标序号和点名称
-    // TODO统计路数量，以可见的无向边统计，arcs[][].type ==-1的边，不和vexNum重合
-    // 加边/修改边，边数量会出问题
-    cout << "\t节点表\t现有节点数和边数:" << vexNum << " " << arcNum<< endl;
+    // TODO统计路数量，以可见的无向边统计，arcs[][].type ==-1的边，不和arcNum重合
+    // 加边/修改边，边数量会出问题，
+    cout << "\t节点表\t现有节点数和有向路数:" << vexNum << " " << arcNum<< endl;
     for (int i = 0; i < kVexNum;i++) {
         if(vexs[i].type != kEmpty) {
             printf("%d\t", i);
@@ -42,7 +42,7 @@ void SchoolMap::ShowVexs() {
     printf("\n");
     for (int i = 0; i < kVexNum; i++) {
         if(vexs[i].type != kEmpty) {
-            printf("%s\t", vexs[i].name);
+            printf("%-8s", vexs[i].name);
         }
     }
     printf("\n");

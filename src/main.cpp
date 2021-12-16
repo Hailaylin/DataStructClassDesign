@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: HailayLin
  * @Date: 2021-12-12 15:30:47
- * @LastEditTime: 2021-12-16 19:54:14
+ * @LastEditTime: 2021-12-16 22:39:43
  * @FilePath: \DataStructClassDesign\src\main.cpp
  */
 
@@ -11,10 +11,8 @@
 int main(int argc, char** argv)
 {
     welcome("msg/welcome.msg");
-    SchoolMap hebeuMap("data/hebeu_3_vexs.data",
-                    "data/hebeu_2_arcs.data");
-    if (!hebeuMap.menu("msg/menu.msg")) {
-       return 0;
-    }
+    SchoolMap hebeuMap("data/hebeu_map_vexs.data",
+                    "data/hebeu_map_arcs.data");
+    hebeuMap.menu("msg/menu.msg");
     return 0;
 }
