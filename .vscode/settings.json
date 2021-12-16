@@ -20,7 +20,21 @@
         "system_error": "cpp",
         "utility": "cpp",
         "random": "cpp",
-        "*.in": "cpp"
+        "*.in": "cpp",
+        "array": "cpp",
+        "bit": "cpp",
+        "cmath": "cpp",
+        "unordered_map": "cpp",
+        "exception": "cpp",
+        "optional": "cpp",
+        "functional": "cpp",
+        "fstream": "cpp",
+        "iosfwd": "cpp",
+        "limits": "cpp",
+        "streambuf": "cpp",
+        "tuple": "cpp",
+        "typeinfo": "cpp"
     },
-    "todo-tree.tree.showBadges": false
+    "todo-tree.tree.showBadges": false,
+    "todo-tree.tree.showCountsInTree": true
 }

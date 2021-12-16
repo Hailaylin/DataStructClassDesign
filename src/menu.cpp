@@ -2,7 +2,7 @@
  * @Description: 菜单
  * @Author: HailayLin
  * @Date: 2021-12-15 18:41:17
- * @LastEditTime: 2021-12-16 20:57:43
+ * @LastEditTime: 2021-12-16 21:21:44
  * @FilePath: \DataStructClassDesign\src\menu.cpp
  */
 
@@ -35,7 +35,6 @@ int SchoolMap::menu(const char *filename) {
         cout << "您的选择:";
         // 试图解决非法输入问题
         cmd = LimitInput(kExit, kEditArc);
-        // TODO 变成可复用函数
         switch (cmd) {
         case kExit: {
             flgExit = true;

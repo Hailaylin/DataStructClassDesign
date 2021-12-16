@@ -2,7 +2,7 @@
  * @Description: 写所有的函数声明、结构体定义
  * @Author: HailayLin
  * @Date: 2021-12-12 16:34:06
- * @LastEditTime: 2021-12-16 20:26:53
+ * @LastEditTime: 2021-12-16 21:22:07
  * @FilePath: \DataStructClassDesign\include\hebeu_map.h
  */
 
@@ -27,8 +27,8 @@ const int kVexNum = 20;
 const int kStrMax = 256; 
 
 // 枚举道路类型(约等于常数)
-enum WayTpye {  kRoad=0,          // 车能走的大路
-                kPath=1           // 只能人行的小路；人能走自行车和电瓶车就都能走
+enum WayTpye {  kRoad  =0,          // 车能走的大路
+                kPath  =1           // 只能人行的小路；人能走自行车和电瓶车就都能走
                 };
 
 // 枚举地点类型
@@ -102,10 +102,10 @@ class SchoolMap {
   // 从文件读地图的点和边
   void ReadMap();
 
-  // TODO 创建节点，提示信息全部在menu.cpp文件
+  // 创建节点，提示信息全部在menu.cpp文件
   void CreateVexs(char filename[FILENAME_MAX], int n);
 
-  // TODO修改点、增加点
+  // 修改点、增加点
   void AddVex(int id, const char *name, int type);
 
   // TODO通过地点文本定位点序号

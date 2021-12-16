@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: HailayLin
  * @Date: 2021-12-12 15:32:18
- * @LastEditTime: 2021-12-16 20:46:20
+ * @LastEditTime: 2021-12-16 21:20:08
  * @FilePath: \DataStructClassDesign\src\init.cpp
  */
 
@@ -34,17 +34,7 @@ void SchoolMap::CreateArcs(char filename[FILENAME_MAX], int n) {
     else {
         fp = fopen(filename, "w+");
     }
-    // 初始化所有边，不能去掉，会出错
-    for (int i = 0; i < kVexNum; i++) {
-        for (int j = 0; j < kVexNum; j++) {
-            arcs[i][j].distance = INT_MAX;
-        }
-    }
-    // 初始化顶点表
-    for (int i = 0; i < kVexNum; i++) {
-        vexs[i].id = vexs[i].name[0] = 0;
-        vexs[i].type = kEmpty;
-    }
+
     // 循环创建
     int cow, column, distance, way_type;
     for (int i = 0; i < n; i++) {
@@ -63,6 +53,18 @@ void SchoolMap::CreateArcs(char filename[FILENAME_MAX], int n) {
 void SchoolMap::ReadMap() {
     fp_vexs = fopen(vexDataFilename, "r+");
     fp_arcs = fopen(arcDataFilename, "r+");
+    // 初始化所有边，不能去掉，会出错
+    for (int i = 0; i < kVexNum; i++) {
+        for (int j = 0; j < kVexNum; j++) {
+            arcs[i][j].distance = INT_MAX;
+            arcs[i][j].type = kEmpty;
+        }
+    }
+    // 初始化顶点表
+    for (int i = 0; i < kVexNum; i++) {
+        vexs[i].id = vexs[i].name[0] = 0;
+        vexs[i].type = kEmpty;
+    }
     // 读取点
     fscanf(fp_vexs, "%d", &vexNum);
     char ch = fgetc(fp_vexs);
