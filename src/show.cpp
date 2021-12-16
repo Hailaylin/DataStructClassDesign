@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: HailayLin
  * @Date: 2021-12-13 23:16:33
- * @LastEditTime: 2021-12-16 19:54:36
+ * @LastEditTime: 2021-12-16 20:53:17
  * @FilePath: \DataStructClassDesign\src\show.cpp
  */
 
@@ -32,12 +32,20 @@ void SchoolMap::ShowMairix() {
 void SchoolMap::ShowVexs() {
     // 输出列标序号和点名称
     cout << "\t节点表\t" << endl;
-    for (int j = 0; j < vexNum; j++) {
-        printf("%d\t", j);
+    int flg_vexNum = 0;
+    for (int j = 0; j < vexNum || flg_vexNum < vexNum;j++) {
+        if(vexs[j].type != kEmpty) {
+            printf("%d\t", j);
+            flg_vexNum++;
+        }
     }
+    flg_vexNum = 0;
     printf("\n");
-    for (int j = 0; j < vexNum; j++) {
-        printf("%s\t", vexs[j].name);
+    for (int j = 0; j < vexNum || flg_vexNum < vexNum; j++) {
+        if(vexs[j].type != kEmpty) {
+            printf("%s\t", vexs[j].name);
+            flg_vexNum++;
+        }
     }
     printf("\n");
 }

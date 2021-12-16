@@ -2,7 +2,7 @@
  * @Description: 菜单
  * @Author: HailayLin
  * @Date: 2021-12-15 18:41:17
- * @LastEditTime: 2021-12-16 20:08:44
+ * @LastEditTime: 2021-12-16 20:57:43
  * @FilePath: \DataStructClassDesign\src\menu.cpp
  */
 
@@ -68,6 +68,8 @@ int SchoolMap::menu(const char *filename) {
             break;
         }
         case kAddWay: {
+            ShowVexs();
+            ShowMairix();
             cout << "要添加路径的输入格式:地点v0 地点v1 距离 路径类型（默认为车可同行的大路0）" << endl
                  << "例如: 0 1 500 0" << endl
                  << "请输入:";
@@ -75,18 +77,8 @@ int SchoolMap::menu(const char *filename) {
             cin >> v0 >> v1 >> distance >> way_type;
             AddWay(v0, v1, distance, way_type);
             arcNum++;
-            // 把当前图保存到选择的文件中,目录默认为data/
-            cout << "输入的图将保存到哪？0是默认图，1要键入文件名:";
-            int save = LimitInput(0,1);
-            char filename[FILENAME_MAX];
-            if (save) {
-                cout << "请输入要保存边的文件名:";
-                cin >> filename;
-            }
-            else {
-                strcpy(filename, arcDataFilename);
-            }
-            SaveMapArc(filename);
+            ShowMairix();
+            SaveMapArc(arcDataFilename);
             Dijkstra(v0);
             break;
         }
@@ -94,36 +86,36 @@ int SchoolMap::menu(const char *filename) {
             char name[kStrMax];
             int id, type;
             ShowVexs();
-            cout << "请输入地点的 id 名称 类型:";
-            cin >> id >> name >> type;
-            AddVex(id, name, type);
-            vexNum++;
+            cout << "请输入要添加的地点个数:";
+            int num = LimitInput(0,100);
+            for(int i = 0; i < num; i++) {
+                cout << "请输入地点的 id 名称 类型:";
+                cin >> id >> name >> type;
+                if (vexs[id].type == kEmpty) {
+                    vexNum++;
+                }
+                AddVex(id, name, type);
+            }
+            SaveMapVex(vexDataFilename);
             cout << "已结束添加.添加后的节点表为:" << endl;
             ShowVexs();
             break;
         }
         case kCreateArcs:{
             ShowVexs();
+            ShowMairix();
+            cout << "请输入要生成的节点个数:" << endl;
             int createArcsNum = LimitInput(0,100);
-            char fnameRequest[kStrMax];
-            SelectFileName(arcDataFilename, fnameRequest);
-            CreateArcs(fnameRequest, createArcsNum);
+            CreateArcs(arcDataFilename, createArcsNum);
+            ShowMairix();
+            break;
         }
         case kCreateVexs: {
             cout << "此功能将更新文件存储的节点，请慎用." << endl;
             cout << "请输入要增加的节点数:";
+            ShowVexs();
             int createVexsNum = LimitInput(0, 100);
-            cout << "输入节点文件将保存到哪？0是默认文件，1是键入文件名:";
-            int save = LimitInput(0,1);
-            char filename[FILENAME_MAX];
-            if (save) {
-                cout << "请输入要保存点的文件名:";
-                cin >> filename;
-            }
-            else {
-                strcpy(filename, arcDataFilename);
-            }
-            CreateVexs(filename, createVexsNum);
+            CreateVexs(vexDataFilename, createVexsNum);
             break;
         }
         case kEditArc: {

@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: HailayLin
  * @Date: 2021-12-12 15:32:18
- * @LastEditTime: 2021-12-16 19:54:01
+ * @LastEditTime: 2021-12-16 20:46:20
  * @FilePath: \DataStructClassDesign\src\init.cpp
  */
 
@@ -17,12 +17,7 @@ SchoolMap::SchoolMap(const char *vexs_data_filename,
     strcpy(vexDataFilename, vexs_data_filename);
     strcpy(arcDataFilename, arcs_data_filename);
 
-    // 初始化所有边，不能去掉，会出错
-    for (int i = 0; i < kVexNum; i++) {
-        for (int j = 0; j < kVexNum; j++) {
-            arcs[i][j].distance = INT_MAX;
-        }
-    }
+    // 压缩到init里面
     ReadMap();
     // 初始v0 = 0的最短路径
     v0 = 0;
@@ -39,7 +34,17 @@ void SchoolMap::CreateArcs(char filename[FILENAME_MAX], int n) {
     else {
         fp = fopen(filename, "w+");
     }
-
+    // 初始化所有边，不能去掉，会出错
+    for (int i = 0; i < kVexNum; i++) {
+        for (int j = 0; j < kVexNum; j++) {
+            arcs[i][j].distance = INT_MAX;
+        }
+    }
+    // 初始化顶点表
+    for (int i = 0; i < kVexNum; i++) {
+        vexs[i].id = vexs[i].name[0] = 0;
+        vexs[i].type = kEmpty;
+    }
     // 循环创建
     int cow, column, distance, way_type;
     for (int i = 0; i < n; i++) {

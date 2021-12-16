@@ -2,7 +2,7 @@
  * @Description: 写所有的函数声明、结构体定义
  * @Author: HailayLin
  * @Date: 2021-12-12 16:34:06
- * @LastEditTime: 2021-12-16 19:53:12
+ * @LastEditTime: 2021-12-16 20:26:53
  * @FilePath: \DataStructClassDesign\include\hebeu_map.h
  */
 
@@ -32,7 +32,8 @@ enum WayTpye {  kRoad=0,          // 车能走的大路
                 };
 
 // 枚举地点类型
-enum SiteTpye { kDormitory  =0,      // 宿舍
+enum SiteTpye { kEmpty      =-1,
+                kDormitory  =0,      // 宿舍
                 kCanteen    =1,      // 饭堂
                 kClassRoom  =2,      // 教室
                 kLibrary    =3,      // 图书馆
